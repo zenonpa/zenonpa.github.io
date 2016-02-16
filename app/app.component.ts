@@ -3,36 +3,36 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
 import {UiTabs, UiPane} from './components/uitabs/ui_tabs';
 
 
-import { DefaultComponent } from './default.component';
-import { CaseComponent } from './case.component';
-import { PrimarysourceComponent } from './primarysource.component';
-import { LiteratureComponent } from './literature.component';
-import { StudyComponent } from './study.component';
-import { PatientComponent } from './patient.component';
+import { DefaultComponent } from './default/default.component';
+import { CaseComponent } from './case/case.component';
+import { PrimarysourceComponent } from './primarysource/primarysource.component';
+import { LiteratureComponent } from './literature/literature.component';
+import { StudyComponent } from './study/study.component';
+import { PatientComponent } from './patient/patient.component';
 
-import { ReactionComponent } from './reaction.component';
-import { TestComponent } from './test.component';
-import { DrugComponent } from './drug.component';
-import { NarrativeComponent } from './narrative.component';
-import { DashboardComponent } from './dashboard.component';
+import { ReactionComponent } from './reaction/reaction.component';
+import { TestComponent } from './test/test.component';
+import { DrugComponent } from './drug/drug.component';
+import { NarrativeComponent } from './narrative/narrative.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
-import { SettingsComponent } from './settings.component';
-import { LogsComponent } from './logs.component';
-import { PrintReportComponent } from './printreport.component';
-import { FindReportComponent } from './findreport.component';
-import { DigemidComponent } from './digemid.component';
+import { SettingsComponent } from './settings/settings.component';
+import { LogsComponent } from './logs/logs.component';
+import { PrintReportComponent } from './printreport/printreport.component';
+import { FindReportComponent } from './findreport/findreport.component';
+import { DigemidComponent } from './digemid/digemid.component';
 
-import { UsersComponent } from './users.component';
-import { ApplicationsComponent } from './applications.component';
-import { GroupsComponent } from './groups.component';
-import { GroupsAppsComponent } from './groupsapps.component';
-import { SyncAppsComponent } from './syncapps.component';
-import { ChangePasswordComponent } from './changepassword.component';
-import { HelpManualComponent } from './helpmanual.component';
+import { UsersComponent } from './users/users.component';
+import { ApplicationsComponent } from './applications/applications.component';
+import { GroupsComponent } from './groups/groups.component';
+import { GroupsAppsComponent } from './groupsapps/groupsapps.component';
+import { SyncAppsComponent } from './syncapps/syncapps.component';
+import { ChangePasswordComponent } from './changepassword/changepassword.component';
+import { HelpManualComponent } from './helpmanual/helpmanual.component';
 
-import { AboutComponent } from './about.component';
-import { LoginComponent } from './login.component';
+import { AboutComponent } from './about/about.component';
+import { LoginComponent } from './login/login.component';
 
 
 
