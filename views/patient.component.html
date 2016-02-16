@@ -1,0 +1,478 @@
+<div class="container-fluid" ng-model = "dpatientBlock"><!-- START CONTAINER DIV -->
+
+    <div class="row"> <!-- start row -->
+    <div class="panel panel-default" ng-app><!--start panel-->
+        <div class="panel-heading">
+            <form class="form-inline">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="showhidepregnant"/> Pregnant
+                    </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                    <label>
+                        <input type="checkbox" ng-model="showhidemasked"/> Masked
+                    </label>
+                </div>
+            </form>
+        </div>
+    </div> <!--end panel-->
+    </div> <!-- end row -->
+
+    <div class="row"> <!-- START ROW DIV -->
+        <form class="form-horizontal" role="form"> <!-- BEGIN FORM -->
+            <div class="col-md-6"> <!-- START LEFT DIV -->
+                <div class="form-group">
+                    <label ng-model="id_label_patientnameinitials" for="id_field_patientnameinitials" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">D.1</span>Patient (name or initials)              
+                    </label>
+                    <div class="col-md-4 divhidetxtdpatient" ng-hide="showhidemasked" ng-class="">
+                        <input class="form-control" tabindex="1" id="id_field_patientnameinitials" ng-model="id_field_patientnameinitials" type="text" ng-blur="savePatientnameinitials()" placeholder="maskable" onkeypress="return isNumberKey(event)" name="name3" mask="w?s?" repeat="20" restrict="reject" validate="false" ng-model="name3" />
+                    </div>
+                </div>               
+                <div class="form-group">
+                    <label ng-model="id_label_gpmedical" for="id_field_gpmedical" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">D.1.1.1</span>GP Medical                   
+                    </label>    
+                    <div class="col-md-4 divhidetxtdpatient" ng-hide="showhidemasked">
+                        <input class="form-control" tabindex="1" id="id_field_gpmedical" ng-model="id_field_gpmedical" type="text" ng-blur="saveGpmedical()" placeholder="maskable" name="dontrepeat" mask="99999" ng-model="dontrepeat" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_specialist" for="id_field_specialist" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">D.1.1.2</span>Specialist                   
+                    </label>
+                    <div class="col-md-4 divhidetxtdpatient" ng-hide="showhidemasked">
+                        <input class="form-control" tabindex="1" id="id_field_specialist" ng-model="id_field_specialist" type="text" ng-blur="savespecialist()" placeholder="maskable"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_hospital" for="id_field_hospital" class="col-md-6 control-label2">
+                        <span class="e2bcode" g-model="E2BCodes" ngshow="true">D.1.1.3</span>Hospital                    
+                    </label>
+                    <div class="col-md-4 divhidetxtdpatient" ng-hide="showhidemasked">
+                        <input class="form-control" tabindex="1" id="id_field_hospital" ng-model="id_field_hospital" type="text" ng-blur="saveHospital()" placeholder="maskable"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_investigation" for="id_field_investigation" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">D.1.1.4</span>Investigation                    
+                    </label>
+                    <div class="col-md-4 divhidetxtdpatient" ng-hide="showhidemasked">
+                        <input class="form-control" tabindex="1" id="id_field_investigation" ng-model="id_field_investigation" type="text" ng-blur="saveInvestigation()" placeholder="maskable"/>
+                    </div>
+                </div>
+                
+                <div class="form-group" ng-controller="DatepickerDemoCtrl">
+                    <label ng-model="id_label_dateofbirth" for="id_field_dateofbirth" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">D.2.1</span>Date of Birth                    
+                    </label>
+                    <div class="col-md-3 divhidetxtdpatient" ng-hide="showhidemasked">
+                        <input ng-model="dt" class="form-control" tabindex="1" id="id_field_dateofbirth" type="text" ng-blur="saveDateofbirth()" placeholder="MM/DD/YYYY" datepicker-popup="dd.MM.yyyy" ng-model="dt" is-open="opened" ng-required="true" />
+                    </div>
+
+                     <div class="col-md-1 divhidetxtdpatient" ng-hide="showhidemasked">
+                        <button class="btn btn-primary" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </div>
+                </div>
+
+                <div class="form-group">
+                    <label ng-model="id_label_agetimeonsetreaction" for="id_field_agetimeonsetreaction" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">D.2.2</span>Age at Time of Onset of Reaction / Event                     
+                    </label>
+                    <div class="col-md-2">
+                        <input class="form-control" tabindex="1" id="id_field_agetimeonsetreaction" ng-model="id_field_agetimeonsetreaction" type="text" ng-blur="saveAgetimeonsetreaction()" placeholder="12345"/>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control">
+                            <option selected>Choose</option>
+                            <option>Years</option>
+                            <option>Months</option>
+                            <option>Days</option>
+                            <option>Hours</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_gestationperiodreactionevent" for="id_field_gestationperiodreactionevent" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">D.2.2.1</span>Gestation Period when Reaction / Event was observed in the Foetus                   
+                    </label>
+                    <div class="col-md-2">
+                        <input class="form-control" tabindex="1" id="id_field_gestationperiodreactionevent" ng-model="id_field_gestationperiodreactionevent" type="text" ng-blur="saveGestationperiodreactionevent()" placeholder="12345"/>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control">
+                            <option selected>Choose</option>
+                            <option>Years</option>
+                            <option>Months</option>
+                            <option>Days</option>
+                            <option>Hours</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_patientagegroup" for="id_field_patientagegroup" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">D.2.3</span>Patient Age Group (as per reporter)                    
+                    </label>
+                    <div class="col-sm-3">
+                        <select class="form-control" tabindex="1" id="id_field_patientagegroup" ng-model="id_field_patientagegroup" size="1" alt="{type: 'select', enterTab: false}" maxlength="1" ng-change="savePatientagegroup()">
+                            <option value="0" selected="">Choose</option>
+                            <option value="1">Foetus</option>
+                            <option value="2">Neonate</option>
+                            <option value="1">Infant</option>
+                            <option value="2">Child</option>
+                            <option value="1">Adolescent</option>
+                            <option value="2">Adult</option>
+                            <option value="1">Elderly</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_bodyweight" for="id_field_gestationperiodreactionevent" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">D.3</span>Body Weight                   
+                    </label>
+                    <div class="col-md-2">
+                        <input class="form-control" tabindex="1" id="id_field_bodyweight" ng-model="id_field_bodyweight" type="text" ng-blur="saveBodyweight()" placeholder="12345"/>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control">
+                            <option selected>Choose</option>
+                            <option>Kilograms</option>
+                            <option>Pounds</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_height" for="id_field_height" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">D.4</span>Height                    
+                    </label>
+                    <div class="col-md-2">
+                        <input class="form-control" tabindex="1" id="id_field_height" ng-model="id_field_height" type="text" ng-blur="saveHeight()" placeholder="12345"/>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control">
+                            <option selected>Choose</option>
+                            <option>Meters</option>
+                            <option>Feet</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_gender" for="id_field_gender" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">D.5</span>Gender                    
+                    </label>
+                    <div class="col-md-3 divhidetxtdpatient" ng-hide="showhidemasked">
+                        <select class="form-control" tabindex="1" id="id_field_gender" ng-model="id_field_gender" size="1" alt="{type: 'select', enterTab: false}" maxlength="1" ng-change="saveGender()">
+                            <option value="0" selected="">Please choose</option>
+                            <option value="1">Maskable</option>
+                            <option value="2">Male</option>
+                            <option value="1">Female</option>
+                            <option value="2">UNK</option>
+                            <option value="1">ASKU</option>
+                            <option value="2">NASK</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 divhidetxtdpatient" ng-hide="showhidemasked">
+                        <select class="form-control">
+                            <option selected>Choose</option>
+                            <option>UNK</option>
+                            <option>ASKU</option>
+                            <option>NASK</option>
+                        </select>
+                    </div>
+                </div>
+            </div> <!-- END LEFT VID-->
+            <!-- oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo -->
+            <div class="col-md-6"> <!-- START RIGHT DIV -->
+                
+                <div class="form-group" ng-controller="DatepickerDemoCtrl">
+                    <label ng-model="id_label_menstrualdate" for="id_field_menstrualdate" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">D.6</span>Menstrual Date                    
+                    </label>
+                    <div class="col-md-3 divhidetxtdpatient" ng-hide="showhidemasked">
+                        <input ng-model="dt" class="form-control" tabindex="1" id="id_field_menstrualdate" type="text" ng-blur="saveMenstrualdate()" placeholder="MM/DD/YYYY" datepicker-popup="dd.MM.yyyy" ng-model="dt" is-open="opened" ng-required="true" />
+                    </div>
+                    <div class="col-md-2" ng-hide="showhidemasked">
+                    <button class="btn btn-primary" ng-click="open($event)">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                    </div>
+             </div>              
+
+
+
+                <div class="form-group" ng-hide="showhidepregnant" ng-controller="DatepickerDemoCtrl">
+                    <label ng-model="id_label_calculatedeliverydate" for="id_field_calculatedeliverydate" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">Non-E2B</span>Calculated delivery Date                    
+                    </label>
+                    <div class="col-md-3">
+                        <input ng-model="dt" class="form-control" tabindex="1" id="id_field_calculatedeliverydate" type="text" ng-blur="saveCalculatedeliverydate()" placeholder="MM/DD/YYYY" datepicker-popup="dd.MM.yyyy" ng-model="dt" is-open="opened" ng-required="true" />
+                    </div>
+                    <div class="col-md-2">
+                    <button class="btn btn-primary" ng-click="open($event)">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                    </div>
+
+                </div>
+                
+                <div class="form-group" ng-hide="showhidepregnant" ng-controller="DatepickerDemoCtrl">
+                    <label ng-model="id_label_firstpostnatalfollowup" for="id_field_firstpostnatalfollowup" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">Non-E2B</span>First postnatal follow-up Date                   
+                    </label>
+                    <div class="col-md-3">
+                        <input ng-model="dt" class="form-control" tabindex="1" id="id_field_firstpostnatalfollowup" ng-model="id_field_firstpostnatalfollowup" type="text" ng-blur="saveFirstpostnatalfollowup()" placeholder="MM/DD/YYYY" datepicker-popup="dd.MM.yyyy" ng-model="dt" is-open="opened" ng-required="true" />
+                    </div>
+                    <div class="col-md-2">
+                    <button class="btn btn-primary" ng-click="open($event)">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group" ng-hide="showhidepregnant" ng-controller="DatepickerDemoCtrl">
+                    <label ng-model="id_label_secondpostnatalfollowup" for="id_field_secondpostnatalfollowup" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">Non-E2B</span>Second postnatal follow-up Date                   
+                    </label>
+                    <div class="col-md-3">
+                        <input ng-model="dt" class="form-control" tabindex="1" id="id_field_secondpostnatalfollowup" ng-model="id_field_secondpostnatalfollowup" type="text" ng-blur="saveSecondpostnatalfollowup()" placeholder="MM/DD/YYYY" datepicker-popup="dd.MM.yyyy" ng-model="dt" is-open="opened" ng-required="true" />
+                    </div>
+                    <div class="col-md-2">
+                    <button class="btn btn-primary" ng-click="open($event)">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                    </div>
+                </div>
+
+
+                <div class="form-group" ng-controller="DatepickerDemoCtrl">
+                    <label ng-model="id_label_lastmedicalconsultation" for="id_field_lastmedicalconsultation" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">Non-E2B</span>Last medical consultation
+          
+                    
+                    </label>
+                    <div class="col-md-3">
+                        <input ng-model="dt" class="form-control" tabindex="1" id="id_field_lastmedicalconsultation" ng-model="id_field_lastmedicalconsultation" type="text" ng-blur="saveLastmedicalconsultation()" placeholder="MM/DD/YYYY" datepicker-popup="dd.MM.yyyy" ng-model="dt" is-open="opened" ng-required="true" />
+                    </div>
+                    <div class="col-md-2">
+                    <button class="btn btn-primary" ng-click="open($event)">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label ng-model="id_label_ethnicgroup" for="id_field_ethnicgroup" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">Non-E2B</span>Ethnic Group                   
+                    </label>
+                    <div class="col-md-4">
+                        <select class="form-control" tabindex="1" id="id_field_ethnicgroup" ng-model="id_field_ethnicgroup" size="1" alt="{type: 'select', enterTab: false}" maxlength="1" ng-change="saveEthnicgroup()">
+                            <option value="0" selected="">Choose</option>
+                            <option value="1">Aboriginal</option>
+                            <option value="2">African</option>
+                            <option value="1">Afrikaner</option>
+                            <option value="2">American Indian</option>
+                            <option value="1">Asian</option>
+                            <option value="2">Black</option>
+                            <option value="1">Chinese</option>
+                            <option value="2">Hispanic or Latino</option>
+                            <option value="1">Indian</option>
+                            <option value="2">Japanese</option>
+                            <option value="1">Mongol</option>
+                            <option value="2">Native Hawaiien</option>
+                            <option value="1">Not Hispanic</option>
+                            <option value="2">Other Group</option>
+                            <option value="1">Polinesian</option>
+                            <option value="2">Unknown</option>
+                            <option value="1">White</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_concomitanttherapies" for="id_field_concomitanttherapies" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">D.7.3</span>Concomitant Therapies                    
+                    </label>
+                    <div class="col-md-4">
+                        <input class="form-control" tabindex="1" id="id_field_concomitanttherapies" ng-model="id_field_concomitanttherapies" type="text" ng-blur="saveConcomitanttherapies()" placeholder="ABCD"/>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group" ng-controller="DatepickerDemoCtrl">
+                    <label ng-model="id_label_deathtime" for="id_field_deathtime" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">D.9.1</span>Death Time                   
+                    </label>
+                    <div class="col-md-3 divhidetxtdpatient" ng-hide="showhidemasked">
+                        <input ng-model="dt" class="form-control" tabindex="1" id="id_field_deathtime" type="text" ng-blur="saveDeathtime()" placeholder="MM/DD/YYYY" datepicker-popup="dd.MM.yyyy" ng-model="dt" is-open="opened" ng-required="true" />
+                    </div>
+
+                     <div class="col-md-1" ng-hide="showhidemasked">
+                    <button class="btn btn-primary" ng-click="open($event)">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                    </div>
+
+                    <div class="col-md-2 divhidetxtdpatient" ng-hide="showhidemasked">
+                        <select class="form-control">
+                            <option selected>Choose</option>
+                            <option>UNK</option>
+                            <option>ASKU</option>
+                            <option>NASK</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="form-group">
+                    <label ng-model="id_label_wasautopsydone" for="id_select_wasautopsydone" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">D.9.3</span>Was Autopsy Done?                    
+                    </label>
+                    <div class="col-md-3 divhidetxtdpatient" ng-hide="showhidemasked">
+                        <select class="form-control" tabindex="1" id="id_select_wasautopsydone" ng-model="id_select_wasautopsydone" size="1" alt="{type: 'select', enterTab: false}" maxlength="1" ng-change="saveWasautopsydone()">
+                            <option value="0" selected="">Choose</option>
+                            <option value="1">Yes</option>
+                            <option value="2">No</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 divhidetxtdpatient" ng-hide="showhidemasked">
+                        <select class="form-control">
+                            <option selected>Choose</option>
+                            <option>UNK</option>
+                            <option>ASKU</option>
+                            <option>NASK</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group" ng-hide="showhidepregnant" ng-controller="DatepickerDemoCtrl">
+                    <label ng-model="id_label_deliverydate" for="id_field_deliverydate" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">Non-E2B</span>Delivery date                    
+                    </label>
+                    <div class="col-md-3">
+                        <input ng-model="dt" class="form-control" tabindex="1" id="id_field_deliverydate" type="text" ng-blur="saveDeliverydate()" placeholder="MM/DD/YYYY" datepicker-popup="dd.MM.yyyy" ng-model="dt" is-open="opened" ng-required="true" />
+                    </div>
+                     <div class="col-md-2">
+                        <button class="btn btn-primary" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </div>
+                </div>
+
+
+                <div class="form-group" ng-hide="showhidepregnant">
+                    <label ng-model="id_label_neonatebodyweight" for="id_field_neonatebodyweight" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">Non-E2B</span>Neonate Body Weight (g)
+          
+                    
+                    </label>
+                    <div class="col-md-2">
+                        <input class="form-control" tabindex="1" id="id_field_neonatebodyweight" ng-model="id_field_neonatebodyweight" type="text" ng-blur="saveNeonatebodyweight()" placeholder="12345"/>
+                    </div>
+                </div>
+                <div class="form-group" ng-hide="showhidepregnant">
+                    <label ng-model="id_label_neonateheight" for="id_field_neonateheight" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">Non-E2B</span>Neonate Height (cm)
+          
+                    
+                    </label>
+                    <div class="col-md-2">
+                        <input class="form-control" tabindex="1" id="id_field_neonateheight" ng-model="id_field_neonateheight" type="text" ng-blur="saveNeonateheight()" placeholder="12345"/>
+                    </div>
+                </div>
+                <div class="form-group" ng-hide="showhidepregnant">
+                    <label ng-model="id_label_textrelevantneonateh" for="id_field_textrelevantneonateh" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">Non-E2B</span>Text for Relevant Neonate History
+          
+                    
+                    </label>
+                    <div class="col-md-6">
+                        <textarea class="form-control" tabindex="1" id="id_field_textrelevantneonateh" ng-model="id_field_textrelevantneonateh" ng-blur="saveTextrelevantneonateh()" cols="50" rows="5" placeholder="ABCD">texto</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_textrelevantmedicalhistory" for="id_field_textrelevantmedicalhistory" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">D.7.2</span>Text for Relevant Medical History and Concurrent Conditions.(not including reaction / event)
+          
+                    
+                    </label>
+                    <div class="col-md-6 divhidetxtdpatient" ng-hide="showhidemasked">
+                        <textarea class="form-control" tabindex="1" id="id_field_textrelevantmedicalhistory" ng-model="id_field_textrelevantmedicalhistory" ng-blur="saveTextrelevantmedicalhistory()" cols="50" rows="5" placeholder="ABCD">texto</textarea>
+                    </div>
+                </div>
+                <div class="form-group" ng-hide="showhidepregnant">
+                    <label ng-model="id_label_textrelevantaccouchement" for="id_field_textrelevantaccouchement" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">Non-E2B</span>Text for Relevant Accouchement History
+          
+                    
+                    </label>
+                    <div class="col-md-6">
+                        <textarea class="form-control" tabindex="1" id="id_field_textrelevantaccouchement" ng-model="id_field_textrelevantaccouchement" ng-blur="saveTextrelevantaccouchement()" cols="50" rows="5" placeholder="ADCD">texto</textarea>
+                    </div>
+                </div>
+            </div>           <!-- END RIGHT VID-->
+        </form>        <!-- END FORM -->
+    </div>    <!-- END ROW DIV -->
+</div><!-- END CONTAINER DIV -->
+
+<div class="container-fluid"> 
+    <div class="row">
+    <div class="col-md-12">
+        
+        <div ng-controller="AccordionDemoCtrl">
+
+  <accordion close-others="oneAtATime">
+
+    <accordion-group is-open="status.isOpen">
+        <accordion-heading><i class="pull-left glyphicon" ng-class="{true : 'glyphicon-chevron-down', false : 'glyphicon-chevron-right'}[!!section1.isOpen]"></i>D.7.1.r Relevant Medical History and Concurrent Conditions (not including reaction / event)
+        </accordion-heading>
+        This is just some content to illustrate fancy headings.
+    </accordion-group>
+
+
+      <accordion-group is-open="section2.isOpen">
+        <accordion-heading><i class="pull-left glyphicon" ng-class="{true : 'glyphicon-chevron-down', false : 'glyphicon-chevron-right'}[!!section2.isOpen]"></i>D.8.r Relevant Past Drug History            
+        </accordion-heading>
+        This is just some content to illustrate fancy headings.
+    </accordion-group>
+    
+    <accordion-group is-open="section3.isOpen">
+        <accordion-heading><i class="pull-left glyphicon" ng-class="{true : 'glyphicon-chevron-down', false : 'glyphicon-chevron-right'}[!!section3.isOpen]"></i>D.9.2.r In Case of Death            
+        </accordion-heading>
+        This is just some content to illustrate fancy headings.
+    </accordion-group>
+      
+      <accordion-group is-open="section4.isOpen">
+        <accordion-heading><i class="pull-left glyphicon" ng-class="{true : 'glyphicon-chevron-down', false : 'glyphicon-chevron-right'}[!!section4.isOpen]"></i>D.9.4.r Autopsy-determined Cause(s) of Death          
+        </accordion-heading>
+        This is just some content to illustrate fancy headings.
+    </accordion-group>
+  </accordion>
+</div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+
+        <label ng-model="id_label_reporterscomments" for="id_input_reporterscomments" class="col-md-6 control-label2">
+                        (non-E2B) Additional Medical History Information
+          
+                    </label>
+        <div class="col-md-8">
+            <textarea class="form-control" tabindex="2"  id="id_input_reporterscomments"  ng-model="id_field_reporterscomments" ng-blur="saveReporterscomments()" cols="50" rows="7" placeholder="ABCD">texto</textarea>
+        </div>
+
+        </div>
+    </div>
+</div>

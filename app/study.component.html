@@ -1,0 +1,35 @@
+<div class="container-fluid" ng-model = "c5studyBlock">
+    <div class="row">
+        <div class="col-md-9">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label ng-model="id_label_studyname" for="id_input_studyname" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ng-show="true">C.5.2</span>Study Name
+         
+                    </label>
+                    <div class="col-md-4">
+                        <input class="form-control" tabindex="1" ng-model="id_field_studyname" type="text" ng-blur="saveStudyname()" placeholder="ABCD">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_sponsorstudyname" for="id_input_sponsorstudyname" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ng-show="true">C.5.3</span>Sponsor Study Number       
+        
+                    </label>
+                    <div class="col-md-4">
+                        <input class="form-control" tabindex="2" ng-model="id_field_sponsorstudyname" type="text" ng-blur="saveSponsorstudyname()" placeholder="ABCD">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_studytypewherereactionevent" for="id_input_studytypewherereactionevent"class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ng-show="true">C.5.4</span>Study Type Where Reaction(s) / Event(s) Were Observed
+        
+                    </label>
+                    <div class="col-md-4">
+                        <input class="form-control"tabindex="3" ng-model="id_field_studytypewherereactionevent" type="text" ng-blur="saveStudytypewherereactionevent()" placeholder="ABCD">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

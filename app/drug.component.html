@@ -1,0 +1,173 @@
+<div class="container-fluid" ng-model = "gdrugBlock">
+    <div class="row">
+        <div class="col-md-7">
+            <form class="form-horizontal" role="form"> 
+                <div class="form-group">
+                    <label ng-model="id_label_chardrugrole" for="id_field_chardrugrole" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">G.k.1</span>Characterisation of Drug Role
+          
+                    </label>
+                    <div class="col-md-3">
+                        <select class="form-control" tabindex="1" id="id_field_chardrugrole" ng-model="id_field_chardrugrole" size="1" alt="{type: 'select', enterTab: false}" maxlength="1" ng-change="saveChardrugrole()">
+                            <option value="0" selected="">Please choose</option>
+                            <option value="1">Test01</option>
+                            <option value="2">Test02</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_mpidversiondatenumber" for="id_field_mpidversiondatenumber" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">G.k.2.1.1a</span>MPID Version Date / Number
+          
+                    </label>
+                    <div class="col-md-4">
+                        <input class="form-control" tabindex="2" id="id_field_mpidversiondatenumber" ng-model="id_field_mpidversiondatenumber" type="text" ng-blur="saveMpidversiondatenumber()" placeholder="ABCD">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_medproductidentifiermpid" for="id_field_medproductidentifiermpid" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">G.k.2.1.1a</span>Medicinal Product Identifier (MPID)
+          
+                    </label>
+                    <div class="col-md-4">
+                        <input class="form-control" tabindex="3" id="id_field_medproductidentifiermpid" ng-model="id_field_medproductidentifiermpid" type="text" ng-blur="saveMedproductidentifiermpid()" placeholder="ABCD">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_pgpidversiondatenumber" for="id_field_pgpidversiondatenumber" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">G.k.2.1.2a</span>PhPID Version Date/Number
+          
+                    </label>
+                    <div class="col-md-4">
+                        <input class="form-control" tabindex="4" id="id_field_pgpidversiondatenumber" ng-model="id_field_pgpidversiondatenumber" type="text" ng-blur="savePgpidversiondatenumber()" placeholder="ABCD">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_pharmaprodidentifierphpid" for="id_field_pharmaprodidentifierphpid" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">G.k.2.1.2b</span>Pharmaceutical Product Identifier (PhPID)
+          
+                    </label>
+                    <div class="col-md-4">
+                        <input class="form-control" tabindex="5" id="id_field_pharmaprodidentifierphpid" ng-model="id_field_pharmaprodidentifierphpid" type="text" ng-blur="savePharmaprodidentifierphpid()" placeholder="ABCD">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_medicinalproductnamebyps" for="id_field_medicinalproductnamebyps" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">G.k.2.2</span>Medicinal Product Name as Reported by the Primary Source
+          
+                    </label>
+                    <div class="col-md-4">
+                        <input class="form-control" tabindex="6" id="id_field_medicinalproductnamebyps" ng-model="id_field_medicinalproductnamebyps" type="text" ng-blur="saveMedicinalproductnamebyps()" placeholder="ABCD">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_identifcountrywherethedrug" for="id_field_identifcountrywherethedrug" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">G.k.2.4</span>Identification of the Country Where the Drug Was Obtained
+          
+                    </label>
+                    <div class="col-md-4">
+                        <input class="form-control" tabindex="7" id="id_field_identifcountrywherethedrug" ng-model="id_field_identifcountrywherethedrug" type="text" ng-blur="saveIdentifcountrywherethedrug()" placeholder="ABCD">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_investigproductblinded" for="id_field_investigproductblinded" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">G.k.2.5</span>Investigational Product Blinded
+          
+                    </label>
+                    <div class="col-md-4">
+                        <input class="form-control" tabindex="8" id="id_field_investigproductblinded" ng-model="id_field_investigproductblinded" type="text" ng-blur="saveInvestigproductblinded()" placeholder="ABCD">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_authorisationappnumber" for="id_field_authorisationappnumber" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">G.k.3.1</span>Authorisation / Application Number
+          
+                    </label>
+                    <div class="col-md-4">
+                        <input class="form-control" tabindex="9" id="id_field_authorisationappnumber" ng-model="id_field_authorisationappnumber" type="text" ng-blur="saveAuthorisationappnumber()" placeholder="ABCD">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_countryauthorisationapp" for="id_field_countryauthorisationapp" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">G.k.3.2</span>Country of Authorisation / Application
+          
+                    </label>
+                    <div class="col-md-3">
+                        <select class="form-control" tabindex="10" id="id_field_countryauthorisationapp" ng-model="id_field_countryauthorisationapp" size="1" alt="{type: 'select', enterTab: false}" maxlength="1" ng-change="saveCountryauthorisationapp()">
+                            <option value="0" selected="">Please choose</option>
+                            <option value="1">Test01</option>
+                            <option value="2">Test02</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_nameholderapplicant" for="id_field_nameholderapplicant" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">G.k.3.3</span>Name of Holder / Applicant
+          
+                    </label>
+                    <div class="col-md-4">
+                        <input class="form-control" tabindex="11" id="id_field_nameholderapplicant" ng-model="id_field_nameholderapplicant" type="text" ng-blur="saveNameholderapplicant()" placeholder="ABCD">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_cumulativedosefirstreactionn" for="id_label_cumulativedosefirstreactionn" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">G.k.5a</span> umulative Dose to First Reaction (number)
+          
+                    </label>
+                    <div class="col-md-4">
+                        <input class="form-control" tabindex="12" id="id_label_cumulativedosefirstreactionn" ng-model="id_label_cumulativedosefirstreactionn" type="text" ng-blur="saveCumulativedosefirstreactionn()" placeholder="ABCD">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_cumulativedosefirstreactionu" for="id_field_cumulativedosefirstreactionu" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">G.k.5b</span>Cumulative Dose to First Reaction (unit)
+          
+                    </label>
+                    <div class="col-md-4">
+                        <input class="form-control" tabindex="13" id="id_field_cumulativedosefirstreactionu" ng-model="id_field_cumulativedosefirstreactionu" type="text" ng-blur="saveCumulativedosefirstreactionu()" placeholder="ABCD">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_gestperiodtimeexpnumber" for="id_field_gestperiodtimeexpnumber" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">G.k.6a</span>Gestation Period at Time of Exposure (number)
+          
+                    </label>
+                    <div class="col-md-4">
+                        <input class="form-control" tabindex="14" id="id_field_gestperiodtimeexpnumber" ng-model="id_field_gestperiodtimeexpnumber" type="text" ng-blur="saveGestperiodtimeexpnumber()" placeholder="ABCD">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_gestperiodtimeexpunit" for="id_field_pgpidversiondatenumber" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">G.k.6b</span>Gestation Period at Time of Exposure (unit)
+          
+                    </label>
+                    <div class="col-md-4">
+                        <input class="form-control" tabindex="15" id="id_field_gestperiodtimeexpunit" ng-model="id_field_gestperiodtimeexpunit" type="text" ng-blur="saveGestperiodtimeexpunit()" placeholder="ABCD">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_actionstakenwithdrug" for="id_field_actionstakenwithdrug" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">G.k.8</span>Action(s) Taken with Drug
+          
+                    </label>
+                    <div class="col-md-3">
+                        <select class="form-control" tabindex="16" id="id_field_actionstakenwithdrug" ng-model="id_field_actionstakenwithdrug" size="1" alt="{type: 'select', enterTab: false}" maxlength="1" ng-change="saveActionstakenwithdrug()">
+                            <option value="0" selected="">Please choose</option>
+                            <option value="1">Test01</option>
+                            <option value="2">Test02</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label ng-model="id_label_additionalinfodrug" for="id_field_additionalinfodrug" class="col-md-6 control-label2">
+                        <span class="e2bcode" ng-model="E2BCodes" ngshow="true">G.k.11</span>Additional Information on Drug (free text)
+          
+                    </label>
+                    <div class="col-md-6">
+                        <textarea class="form-control" tabindex="17" id = "id_field_additionalinfodrug" ng-model="id_field_additionalinfodrug" ng-blur="saveAdditionalinfodrug()" cols="50" rows="5" placeholder="ABCD">texto</textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
