@@ -1,51 +1,50 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html>
-  <head>
-    <script>document.write('<base href="' + document.location + '" />');</script>
-    <title>PV Safety Manager1</title>
+<head>
+ <style type="text/css">
+	#overlay{
+	    	display: none;
+		position: fixed;
+		top: 0%;
+		left: 0%;
+		width: 100%;
+		height: 100%;
+		background-color: black;
+		opacity: 0.8;
+		z-index:1001;
+	}
+ </style>
+	<title>ZENONPA's Site</title>
+</head>
+<body>
+	<div id="overlay">
+	  <div id="overlay-content">
+	    This will all vanish in 5 seconds ...
+	  </div>
+	</div>
 
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<h1>My Awesome Page!</h1>
+	<p>My Awesome content</p>
+	<script type="text/javascript">
+		$.fn.center = function () {
+		  this.css("position","absolute");
+		  this.css("top", Math.max(0, (
+		    ($(window).height() - $(this).outerHeight()) / 2) + 
+		     $(window).scrollTop()) + "px"
+		  );
+		  this.css("left", Math.max(0, (
+		    ($(window).width() - $(this).outerWidth()) / 2) + 
+		     $(window).scrollLeft()) + "px"
+		  );
+		  return this;
+		}
 
-<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'  type='text/css'>
+		$("#overlay").show();
+		$("#overlay-content").show().center();
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-submenu/2.0.3/css/bootstrap-submenu.min.css" rel="stylesheet" type="text/css">
-
-    <!-- IE required polyfills, in this exact order -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.33.3/es6-shim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.16/system-polyfills.js"></script>
-
-    <script src="https://code.angularjs.org/2.0.0-beta.3/angular2-polyfills.js"></script>
-    <script src="https://code.angularjs.org/tools/system.js"></script>
-    <script src="https://code.angularjs.org/tools/typescript.js"></script>
-    <script src="https://code.angularjs.org/2.0.0-beta.3/Rx.js"></script>
-    <script src="https://code.angularjs.org/2.0.0-beta.3/angular2.dev.js"></script>
-    <script src="https://code.angularjs.org/2.0.0-beta.3/router.dev.js"></script>
-
-    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-submenu/2.0.3/js/bootstrap-submenu.min.js"></script>
-    <script>
-      System.config({
-        transpiler: 'typescript', 
-        typescriptOptions: { emitDecoratorMetadata: true }, 
-        packages: {'app': {defaultExtension: 'ts'}} 
-      });
-      System.import('app/main')
-            .then(null, console.error.bind(console));
-    </script>
-  </head>
-
-  <body>
-    <pvsafety>Cargando...<pvsafety>
-
-
-  </body>
+		setTimeout(function(){    
+		  $("#overlay").fadeOut();
+		}, 5000);			
+	</script>
+</body>
 </html>
-<!-- 
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
--->
