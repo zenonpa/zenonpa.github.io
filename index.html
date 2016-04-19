@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
- <style type="text/css">
-	#overlay{
+	<script type="text/javascript" src="http://code.jquery.com/jquery-git.js"></script>
+	<style type="text/css">
+	    #overlay{
 	    	display: none;
 		position: fixed;
 		top: 0%;
@@ -10,22 +11,38 @@
 		width: 100%;
 		height: 100%;
 		background-color: black;
-		opacity: 0.8;
+		opacity: 0.5;
 		z-index:1001;
 	}
- </style>
+
+	#overlay-content{ 
+		position: absolute;
+		display: none;
+		width: 360px;
+		height: 90px;
+		padding: 16px;
+		border: 16px solid orange;
+		background-color: white;
+		z-index:1002;
+	}
+	  
+	</style>	
+
+
 	<title>ZENONPA's Site</title>
 </head>
 <body>
 	<div id="overlay">
 	  <div id="overlay-content">
-	    This will all vanish in 5 seconds ...
+	    This will all vanish in 2 seconds ...
 	  </div>
 	</div>
 
-	<h1>My Awesome Page!</h1>
-	<p>My Awesome content</p>
-	<script type="text/javascript">
+	<h1>Zenon Paredes</h1>
+	<p>Breve descripcion...</p>
+	<script type="text/javascript">	    
+		
+		$(window).on('load', function() {
 		$.fn.center = function () {
 		  this.css("position","absolute");
 		  this.css("top", Math.max(0, (
@@ -33,7 +50,7 @@
 		     $(window).scrollTop()) + "px"
 		  );
 		  this.css("left", Math.max(0, (
-		    ($(window).width() - $(this).outerWidth()) / 2) + 
+		    ($(window).width() - $(this).outerWidth()) / 3) + 
 		     $(window).scrollLeft()) + "px"
 		  );
 		  return this;
@@ -44,7 +61,10 @@
 
 		setTimeout(function(){    
 		  $("#overlay").fadeOut();
-		}, 5000);			
-	</script>
+		}, 2000);
+		});
+	
+	</script> 
+
 </body>
 </html>
