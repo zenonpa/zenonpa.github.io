@@ -166,8 +166,9 @@
                     if (result === null) {
                         return;
                     }
-                    
-                    console.log(JSON.stringify(result.value));
+                   // console.log(JSON.stringify(result.value));
+                    var arr = result.value.keys(obj).map(function(k) { return obj[k] });                    
+                    console.log(arr);
                     result.continue();
                     
                 };                
