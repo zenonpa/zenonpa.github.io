@@ -21,6 +21,22 @@
         <script type="text/javascript">
             var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
             var dataBase = null;
+
+            function filterGlobal () {
+                $('#example').DataTable().search(
+                    $('#global_filter').val(),
+                    $('#global_regex').prop('checked'),
+                    $('#global_smart').prop('checked')
+                ).draw();
+            }
+             
+            function filterColumn ( i ) {
+                $('#example').DataTable().column( i ).search(
+                    $('#col'+i+'_filter').val(),
+                    $('#col'+i+'_regex').prop('checked'),
+                    $('#col'+i+'_smart').prop('checked')
+                ).draw();
+            }
             
             function startDB() {
                 
@@ -224,7 +240,17 @@
                                     .draw();
                             }
                         } );
-                    } );      
+                    } );   
+
+                    $('input.global_filter').on( 'keyup click', function () {
+                        filterGlobal();
+                    } );
+                 
+                    $('input.column_filter').on( 'keyup click', function () {
+                        filterColumn( $(this).parents('tr').attr('data-column') );
+                    } );
+                    
+                    
                 }
                 
             }
