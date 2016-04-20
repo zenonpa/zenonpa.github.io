@@ -11,9 +11,12 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>IndexedDB: Local Database with HTML5</title>
+        <title>IndexedDB: MedDRA</title>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
         <script type="text/javascript" src="//code.jquery.com/jquery-2.2.1.js"></script>
-        <script type="text/javascript" src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>    
+        <script type="text/javascript" src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+
 
         <script type="text/javascript">
             var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
@@ -178,7 +181,19 @@
                     
                 };                
                 data.oncomplete = function() {
-                    console.log(sDataTotal.toString());
+                    //console.log(sDataTotal.toString());
+                    $('#example').DataTable( {
+                        data: sDataTotal,
+                        columns: [
+                            { title: "SOC ORDER" },
+                            { title: "SOC CODE" },
+                            { title: "SOC NAME" },
+                            { title: "PT CODE" },
+                            { title: "PT NAME" },
+                            { title: "LLT CODE" },
+                            { title: "LLT NAME" }
+                        ]
+                    } );                    
                 }
                 
             }
@@ -285,6 +300,7 @@
         </script>
     </head>
     <body onload="startDB();">
+     
         <input type="text" id="soc_order" placeholder="Enter Soc Order" />
         <input type="text" id="soc_code" placeholder="Enter SOC code" />
         <input type="text" id="soc_name" placeholder="Enter SOC name" />
@@ -295,6 +311,7 @@
         <button type="button" onclick="add();">Save</button>
         <button type="button" onclick="AddJSON();">Add JSON</button>
         <hr />
+        <table id="example" class="display" width="100%"></table>
         <div id="elements">
             <table>
                 <caption>Meddra</caption>
