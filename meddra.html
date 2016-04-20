@@ -22,11 +22,6 @@
             var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
             var dataBase = null;
             
-            $.extend( true, $.fn.dataTable.defaults, {
-                "searching": false,
-                "ordering": false
-            } );             
-            
             function startDB() {
                 
                 dataBase = indexedDB.open("meddra", 1);
@@ -329,29 +324,6 @@
         <button type="button" onclick="AddJSON();">Add JSON</button>
         <hr />
         <table id="example" class="display" width="100%"></table>
-        <div id="elements">
-            <table>
-                <caption>Meddra</caption>
-                <thead>
-                    <tr>
-                        <th>Soc Order</th>
-                        <th>Soc Code</th>
-                        <th>Soc Name</th>
-                        <th>PT Code</th>
-                        <th>PT Name</th>
-                        <th>LLT Code</th>
-                        <th>LLT Name</th>
-                        <th> </th>
-                    </tr>
-                </thead>
-                <tbody id="elementsList">
-                    <tr>
-                        <td colspan="3">Not elements to show</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <button type="button" onclick="loadAllByName();">Order by name</button>
 
     </body>
 </html>
