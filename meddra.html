@@ -190,7 +190,34 @@
                               
                 data.oncomplete = function() {
                     //console.log(sDataTotal.toString());
-
+                    var table = $('#example').DataTable( {
+                         data: sDataTotal,
+                         columns: [
+                             { title: "SOC ORDER" },
+                             { title: "SOC CODE" },
+                             { title: "SOC NAME" },
+                             { title: "PT CODE" },
+                             { title: "PT NAME" },
+                             { title: "LLT CODE" },
+                             { title: "LLT NAME" }
+                         ]
+                     } );   
+                     $('#example tbody').on('click', 'tr', function () {
+                         var data = table.row( this ).data();
+                         document.querySelector('#selectedItem').value = 'You clicked on '+data[1]+'\'s row' ;
+                     } );
+                     // Apply the search
+                     table.columns().every( function () {
+                         var that = this;
+                  
+                         $( 'input', this.footer() ).on( 'keyup change', function () {
+                             if ( that.search() !== this.value ) {
+                                 that
+                                     .search( this.value )
+                                     .draw();
+                             }
+                         } );
+                     } );   
                     
                     
                 }
