@@ -34,7 +34,7 @@
                 
                 dataBase.onsuccess = function (e) {
                     console.log('Database loaded');
-                    loadAll();
+                    loadAll2();
                 };
                 
                 dataBase.onerror = function (e) {
@@ -152,6 +152,16 @@
                 document.querySelector('#llt_name').value = datos.llt_name;
                 add();
             }
+            function loadAll2() {
+                
+                var active = dataBase.result;
+                var data = active.transaction(["v18"], "readonly");
+                var object = data.objectStore("v18");
+                
+                document.write(JSON.stringify(object));
+                
+            }
+               
             function loadAll() {
                 
                 var active = dataBase.result;
