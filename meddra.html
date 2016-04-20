@@ -190,7 +190,7 @@
                               
                 data.oncomplete = function() {
                     //console.log(sDataTotal.toString());
-                   $('#example tfoot th').each( function () {
+                   $('#example thead th').each( function () {
                        var title = $(this).text();
                        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
                    } );
@@ -210,7 +210,7 @@
 
                     $('#example tbody').on('click', 'tr', function () {
                         var data = table.row( this ).data();
-                        alert( 'You clicked on '+data[0]+'\'s row' );
+                        document.write( 'You clicked on '+data[1]+'\'s row' );
                     } );
 
                     // Apply the search
