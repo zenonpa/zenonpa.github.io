@@ -167,11 +167,12 @@
                         return;
                     }
                     
-                    console.log(result.value);
+                    console.log(result);
                     result.continue();
                     
                 };                
-                
+                data.oncomplete = function() {
+                }
                 
             }
                
