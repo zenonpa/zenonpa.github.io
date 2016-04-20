@@ -210,7 +210,7 @@
 
                     $('#example tbody').on('click', 'tr', function () {
                         var data = table.row( this ).data();
-                        document.write( 'You clicked on '+data[1]+'\'s row' );
+                        document.querySelector('#selectedItem').value = 'You clicked on '+data[1]+'\'s row' ;
                     } );
 
                     // Apply the search
@@ -343,6 +343,6 @@
         <button type="button" onclick="AddJSON();">Add JSON</button>
         <hr />
         <table id="example" class="display" width="100%"></table>
-
+        <input type="text" id="selectedItem" placeholder="" />
     </body>
 </html>
