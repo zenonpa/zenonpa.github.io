@@ -158,7 +158,7 @@
                 var data = active.transaction(["v18"], "readonly");
                 var object = data.objectStore("v18");
 
-                var myIndex = object.index('lName'); 
+                var myIndex = object.index('by_name'); 
                 var countRequest = myIndex.count();
                 countRequest.onsuccess = function() {
                   console.log(countRequest.result);
