@@ -22,6 +22,11 @@
             var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
             var dataBase = null;
             
+            $.extend( true, $.fn.dataTable.defaults, {
+                "searching": false,
+                "ordering": false
+            } );             
+            
             function startDB() {
                 
                 dataBase = indexedDB.open("meddra", 1);
@@ -201,11 +206,6 @@
                         ]
                     } );   
 
-                    $.extend( true, $.fn.dataTable.defaults, {
-                        "searching": false,
-                        "ordering": false
-                    } ); 
-                    
                     $('#example tbody').on('click', 'tr', function () {
                         var data = table.row( this ).data();
                         alert( 'You clicked on '+data[0]+'\'s row' );
