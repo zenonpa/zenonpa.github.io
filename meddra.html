@@ -146,14 +146,20 @@
             }
             function addRegistrosMain(datos2){               
                 var datos = JSON.parse(datos2);                
-                document.querySelector('#soc_order').value = datos.soc_order;
-                document.querySelector('#soc_code').value = datos.soc_code;
-                document.querySelector('#soc_name').value = datos.soc_name;
-                document.querySelector('#pt_code').value = datos.pt_code;
-                document.querySelector('#pt_name').value = datos.pt_name;
-                document.querySelector('#llt_code').value = datos.llt_code;
-                document.querySelector('#llt_name').value = datos.llt_name;
-                add();
+                var active = dataBase.result;
+                var data = active.transaction(["v18"], "readwrite");
+                var object = data.objectStore("v18");
+                object.clear();
+                var request = object.put(datos);
+                
+                request.onerror = function (e) {
+                    alert(request.error.name + '\n\n' + request.error.message);
+                };
+        
+                data.oncomplete = function (e) {
+                    console.log('Object successfully added');
+                    //loadAll();
+                };
             }
             function loadAll2() {
                 var sData = [];
