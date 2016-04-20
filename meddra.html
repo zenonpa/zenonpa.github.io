@@ -188,11 +188,6 @@
                 };                
                 data.oncomplete = function() {
                     //console.log(sDataTotal.toString());
-                   $.extend( true, $.fn.dataTable.defaults, {
-                       "searching": false,
-                       "ordering": false
-                   } );                 
-                                            
                    var table = $('#example').DataTable( {
                         data: sDataTotal,
                         columns: [
@@ -206,6 +201,11 @@
                         ]
                     } );   
 
+                    $.extend( true, $.fn.dataTable.defaults, {
+                        "searching": false,
+                        "ordering": false
+                    } ); 
+                    
                     $('#example tbody').on('click', 'tr', function () {
                         var data = table.row( this ).data();
                         alert( 'You clicked on '+data[0]+'\'s row' );
