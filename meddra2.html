@@ -1,0 +1,291 @@
+ <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>IndexedDB: Local Database with HTML5</title>
+        <script type="text/javascript" src="//code.jquery.com/jquery-2.2.1.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>    
+
+        <script type="text/javascript">
+            var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+            var dataBase = null;
+            
+            function startDB() {
+                
+                dataBase = indexedDB.open("meddra", 1);
+                
+                dataBase.onupgradeneeded = function (e) {
+                
+                    var active = dataBase.result;   
+                    var object = active.createObjectStore('v18', { keyPath : 'id', autoIncrement : true });
+                    object.createIndex('by_name', 'soc_code', { unique : false });
+
+                    
+                };
+                
+                dataBase.onsuccess = function (e) {
+                    console.log('Database loaded');
+                    loadAll();
+                };
+                
+                dataBase.onerror = function (e) {
+                    alert('Error loading database');
+                };
+
+            }
+
+
+                        
+
+            function add() {
+                
+                var active = dataBase.result;
+                var data = active.transaction(["v18"], "readwrite");
+                var object = data.objectStore("v18");
+                
+                var request = object.put({
+                    soc_order : document.querySelector("#soc_order").value,
+                    soc_code : document.querySelector("#soc_code").value.toLowerCase(),
+                    soc_name : document.querySelector("#soc_name").value,
+                    pt_code : document.querySelector("#pt_code").value,
+                    pt_name : document.querySelector("#pt_name").value,
+                    llt_code : document.querySelector("#llt_code").value,
+                    llt_name : document.querySelector("#llt_name").value
+                });
+                
+                request.onerror = function (e) {
+                    alert(request.error.name + '\n\n' + request.error.message);
+                };
+        
+                data.oncomplete = function (e) {
+                    document.querySelector('#soc_order').value = '';
+                    document.querySelector('#soc_code').value = '';
+                    document.querySelector('#soc_name').value = '';
+                    document.querySelector('#pt_code').value = '';
+                    document.querySelector('#pt_name').value = '';
+                    document.querySelector('#llt_code').value = '';
+                    document.querySelector('#llt_name').value = '';
+                    console.log('Object successfully added');
+                    //loadAll();
+                };
+            }
+            
+            function load(id) {
+                
+                var active = dataBase.result;
+                var data = active.transaction(["v18"], "readonly");
+                var object = data.objectStore("v18");
+                
+                var request = object.get(parseInt(id));
+                
+                request.onsuccess = function () {
+                    
+                    var result = request.result;
+                    
+                    if (result !== undefined) {
+                        alert("ID: " + result.id + "\n\
+                        soc_order: " + result.soc_order + "\n\
+                        soc_code: " + result.soc_code + "\n\
+                        soc_name: " + result.soc_name);
+                    }
+                };
+                
+            }
+            
+            function loadBySoc(soc_order) {
+                
+                var active = dataBase.result;
+                var data = active.transaction(["v18"], "readonly");
+                var object = data.objectStore("v18");
+                var index = object.index("by_soc_order");
+                
+                var request = index.get(String(soc_order));
+                
+                request.onsuccess = function () {
+                    
+                    var result = request.result;
+                    
+                    if (result !== undefined) {
+                        alert("ID: " + result.id + "\n\
+                        soc_order: " + result.soc_order + "\n\
+                        soc_code: " + result.soc_code + "\n\
+                        soc_name: " + result.soc_name);
+                    }
+                };
+                
+            }
+            
+            function AddJSON(){
+                    
+
+              $.ajax({url: 'http://pvmedra2.azurewebsites.net/api/meddra/1' ,dataType: 'json', success: function(data) {   
+                    addRegistros(data);                                      
+                    }.bind(this),
+                    error: function(xhr, status, err) {
+                        console.error(this.props.url, status, err.toString());
+                    }.bind(this)
+                });              
+            }
+            function addRegistros(dat1){
+                
+                addRegistrosMain(JSON.stringify(dat1));
+                
+            }
+            function addRegistrosMain(datos2){               
+                var datos = JSON.parse(datos2);                
+                var active = dataBase.result;
+                var data = active.transaction(["v18"], "readwrite");
+                var object = data.objectStore("v18");
+                object.clear();
+                var request = object.put(datos);
+                
+                request.onerror = function (e) {
+                    alert(request.error.name + '\n\n' + request.error.message);
+                };
+        
+                data.oncomplete = function (e) {
+                    console.log('Object successfully added');
+                    //loadAll();
+                };
+            }
+            function loadAll() {
+                
+                var active = dataBase.result;
+                var data = active.transaction(["v18"], "readonly");
+                var object = data.objectStore("v18");
+                
+                var elements = [];
+                
+                object.openCursor().onsuccess = function (e) {
+                    
+                    var result = e.target.result;
+                    console.log("result : ", result.value[0]);
+                    if (result === null) {
+                        return;
+                    }
+                    
+                    for (var i in result.value){
+                        elements.push(result.value[i]);
+                    }
+                        
+                    
+                    return;                        
+                    
+                };
+                
+                data.oncomplete = function() {
+                    
+                    var outerHTML = '';
+                    
+                    for (var key in elements) {
+                        
+                        outerHTML += '\n\
+                        <tr>\n\
+                            <td>' + elements[key].soc_order + '</td>\n\
+                            <td>' + elements[key].soc_code + '</td>\n\
+                            <td>' + elements[key].soc_name + '</td>\n\
+                            <td>' + elements[key].pt_code + '</td>\n\
+                            <td>' + elements[key].pt_name + '</td>\n\
+                            <td>' + elements[key].llt_code + '</td>\n\
+                            <td>' + elements[key].llt_name + '</td>\n\
+                            <td>\n\
+                                <button type="button" onclick="load(' + elements[key].id + ');">Details</button>\n\
+                                <button type="button" onclick="loadBySoc(' + elements[key].soc_order + ');">Details soc_order</button>\n\
+                            </td>\n\
+                        </tr>';                        
+                    }
+                    
+                    elements = [];
+                    document.querySelector("#elementsList").innerHTML = outerHTML;
+                };
+                
+            }
+            
+            function loadAllByName() {
+                
+                var active = dataBase.result;
+                var data = active.transaction(["v18"], "readonly");
+                var object = data.objectStore("v18");
+                var index = object.index('by_name');
+                
+                var elements = [];
+                
+                index.openCursor().onsuccess = function (e) {
+                    
+                    var result = e.target.result;
+                    
+                    if (result === null) {
+                        return;
+                    }
+                    
+                    elements.push(result.value);
+                    result.continue();
+                    
+                };
+                
+                data.oncomplete = function() {
+                    
+                    var outerHTML = '';
+                    
+                    for (var key in elements) {
+                        
+                        outerHTML += '\n\
+                        <tr>\n\
+                            <td>' + elements[key].soc_order + '</td>\n\
+                            <td>' + elements[key].soc_code + '</td>\n\
+                            <td>' + elements[key].soc_name + '</td>\n\
+                            <td>' + elements[key].pt_code + '</td>\n\
+                            <td>' + elements[key].pt_name + '</td>\n\
+                            <td>' + elements[key].llt_code + '</td>\n\
+                            <td>' + elements[key].llt_name + '</td>\n\
+                            <td>\n\
+                                <button type="button" onclick="load(' + elements[key].id + ');">Details</button>\n\
+                                <button type="button" onclick="loadBySoc(' + elements[key].soc_order + ');">Details soc_order</button>\n\
+                            </td>\n\
+                        </tr>';                        
+                    }
+                    
+                    elements = [];
+                    document.querySelector("#elementsList").innerHTML = outerHTML;
+                };
+                
+            }
+
+        </script>
+    </head>
+    <body onload="startDB();">
+        <input type="text" id="soc_order" placeholder="Enter Soc Order" />
+        <input type="text" id="soc_code" placeholder="Enter SOC code" />
+        <input type="text" id="soc_name" placeholder="Enter SOC name" />
+        <input type="text" id="pt_code" placeholder="Enter PT code" />
+        <input type="text" id="pt_name" placeholder="Enter PT Name" />
+        <input type="text" id="llt_code" placeholder="Enter LLT Code" />
+        <input type="text" id="llt_name" placeholder="Enter LLT Name" />
+        <button type="button" onclick="add();">Save</button>
+        <button type="button" onclick="AddJSON();">Add JSON</button>
+        <hr />
+        <div id="elements">
+            <table>
+                <caption>Meddra</caption>
+                <thead>
+                    <tr>
+                        <th>Soc Order</th>
+                        <th>Soc Code</th>
+                        <th>Soc Name</th>
+                        <th>PT Code</th>
+                        <th>PT Name</th>
+                        <th>LLT Code</th>
+                        <th>LLT Name</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody id="elementsList">
+                    <tr>
+                        <td colspan="3">Not elements to show</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button type="button" onclick="loadAllByName();">Order by name</button>
+    </body>
+</html>

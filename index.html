@@ -34,14 +34,20 @@
 <body>
 	<div id="overlay">
 	  <div id="overlay-content">
-	    This will all vanish in 2 seconds ...
+	    <h3>PV Safety Manager</h3>
+	     <p>MedDRA Version 18.0</p>
+
 	  </div>
 	</div>
 
 	<h1>Zenon Paredes</h1>
 	<p>Breve descripcion...</p>
 	<script type="text/javascript">	    
-		
+		if (!window.indexedDB) {
+		    window.alert("Your browser doesn't support a stable version of IndexedDB. Such and such feature will not be available.");
+		}else{
+			window.alert("Your browser support a stable version of IndexedDB.");
+		}		
 		$(window).on('load', function() {
 		$.fn.center = function () {
 		  this.css("position","absolute");
