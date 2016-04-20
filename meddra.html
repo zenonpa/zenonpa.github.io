@@ -186,8 +186,15 @@
                     result.continue();
                     
                 };                
+
+                              
                 data.oncomplete = function() {
                     //console.log(sDataTotal.toString());
+                   $('#example tfoot th').each( function () {
+                       var title = $(this).text();
+                       $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+                   } );
+
                    var table = $('#example').DataTable( {
                         data: sDataTotal,
                         columns: [
@@ -205,7 +212,19 @@
                         var data = table.row( this ).data();
                         alert( 'You clicked on '+data[0]+'\'s row' );
                     } );
-      
+
+                    // Apply the search
+                    table.columns().every( function () {
+                        var that = this;
+                 
+                        $( 'input', this.footer() ).on( 'keyup change', function () {
+                            if ( that.search() !== this.value ) {
+                                that
+                                    .search( this.value )
+                                    .draw();
+                            }
+                        } );
+                    } );      
                 }
                 
             }
