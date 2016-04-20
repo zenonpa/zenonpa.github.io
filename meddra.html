@@ -153,7 +153,8 @@
                 add();
             }
             function loadAll2() {
-                
+                var sData = [];
+
                 var active = dataBase.result;
                 var data = active.transaction(["v18"], "readonly");
                 var object = data.objectStore("v18");
@@ -168,13 +169,12 @@
                     }
                    // console.log(JSON.stringify(result.value));
                     var objJSON = result.value;
-                    var sData = [];
-                    sData.push(objJSON.llt_name);
-                    console.log(sData);
+                    sData.push(objJSON.soc_order, objJSON.soc_code, objJSON.soc_name, objJSON.pt_code, objJSON.pt_name, objJSON.llt_code, objJSON.llt_name);
                     result.continue();
                     
                 };                
                 data.oncomplete = function() {
+                    console.log(sData);
                 }
                 
             }
