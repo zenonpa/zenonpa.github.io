@@ -171,14 +171,14 @@
                    // console.log(JSON.stringify(result.value));
                     var objJSON = result.value;
                     sData.push(objJSON.soc_order, objJSON.soc_code, objJSON.soc_name, objJSON.pt_code, objJSON.pt_name, objJSON.llt_code, objJSON.llt_name);
-                    console.log(sData);
+                    //console.log(sData);
                     sDataTotal.push(sData);
                     sData = [];
                     result.continue();
                     
                 };                
                 data.oncomplete = function() {
-                    console.log(sDataTotal);
+                    console.log(sDataTotal.toString());
                 }
                 
             }
