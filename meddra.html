@@ -19,28 +19,11 @@
 
 
         <script type="text/javascript">
-            alert("Aqui va nuevo codigo 0");
             var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
             var dataBase = null;
 
-            function filterGlobal () {
-                $('#example').DataTable().search(
-                    $('#global_filter').val(),
-                    $('#global_regex').prop('checked'),
-                    $('#global_smart').prop('checked')
-                ).draw();
-            }
-             
-            function filterColumn ( i ) {
-                $('#example').DataTable().column( i ).search(
-                    $('#col'+i+'_filter').val(),
-                    $('#col'+i+'_regex').prop('checked'),
-                    $('#col'+i+'_smart').prop('checked')
-                ).draw();
-            }
-            
+
             function startDB() {
-                alert("Aqui va nuevo codigo 1");
                 dataBase = indexedDB.open("meddra", 1);
                 
                 dataBase.onupgradeneeded = function (e) {
@@ -207,10 +190,6 @@
                               
                 data.oncomplete = function() {
                     //console.log(sDataTotal.toString());
-                   $('#example thead th').each( function () {
-                       var title = $(this).text();
-                       $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
-                   } );
 
                    var table = $('#example').DataTable( {
                         data: sDataTotal,
@@ -230,28 +209,7 @@
                         document.querySelector('#selectedItem').value = 'You clicked on '+data[1]+'\'s row' ;
                     } );
 
-                    // Apply the search
-                    table.columns().every( function () {
-                        var that = this;
-                 
-                        $( 'input', this.footer() ).on( 'keyup change', function () {
-                            if ( that.search() !== this.value ) {
-                                that
-                                    .search( this.value )
-                                    .draw();
-                            }
-                        } );
-                    } );   
 
-                    $('input.global_filter').on( 'keyup click', function () {
-                        filterGlobal();
-                    } );
-                 
-                    $('input.column_filter').on( 'keyup click', function () {
-                        filterColumn( $(this).parents('tr').attr('data-column') );
-                    } );
-                    
-                    
                 }
                 
             }
