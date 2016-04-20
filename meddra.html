@@ -168,8 +168,9 @@
                     }
                    // console.log(JSON.stringify(result.value));
                     var objJSON = result.value;
-                    var yourArray = _(objJSON).toArray();
-                    console.log(yourArray);
+                    var sData = [];
+                    sData.push(objJSON.llt_name);
+                    console.log(sData);
                     result.continue();
                     
                 };                
