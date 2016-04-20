@@ -158,8 +158,19 @@
                 var data = active.transaction(["v18"], "readonly");
                 var object = data.objectStore("v18");
 
-                console.log(object);
                 
+                object.openCursor().onsuccess = function (e) {
+                    
+                    var result = e.target.result;
+                    
+                    if (result === null) {
+                        return;
+                    }
+                    
+                    console.log(result.value);
+                    result.continue();
+                    
+                };                
                 
                 
             }
