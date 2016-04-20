@@ -167,7 +167,8 @@
                         return;
                     }
                    // console.log(JSON.stringify(result.value));
-                    var yourArray = _(result.value).toArray();
+                    var objJSON = result.value;
+                    var yourArray = _(objJSON).toArray();
                     console.log(yourArray);
                     result.continue();
                     
