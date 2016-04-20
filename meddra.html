@@ -11,16 +11,19 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>IndexedDB: Local Database with HTML5</title>
+        <title>IndexedDB: MedDRA</title>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
         <script type="text/javascript" src="//code.jquery.com/jquery-2.2.1.js"></script>
-        <script type="text/javascript" src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>    
+        <script type="text/javascript" src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+
 
         <script type="text/javascript">
             var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
             var dataBase = null;
-            
+
+
             function startDB() {
-                
                 dataBase = indexedDB.open("meddra", 1);
                 
                 dataBase.onupgradeneeded = function (e) {
@@ -143,27 +146,71 @@
             }
             function addRegistrosMain(datos2){               
                 var datos = JSON.parse(datos2);                
-                document.querySelector('#soc_order').value = datos.soc_order;
-                document.querySelector('#soc_code').value = datos.soc_code;
-                document.querySelector('#soc_name').value = datos.soc_name;
-                document.querySelector('#pt_code').value = datos.pt_code;
-                document.querySelector('#pt_name').value = datos.pt_name;
-                document.querySelector('#llt_code').value = datos.llt_code;
-                document.querySelector('#llt_name').value = datos.llt_name;
-                add();
+                var active = dataBase.result;
+                var data = active.transaction(["v18"], "readwrite");
+                var object = data.objectStore("v18");
+                object.clear();
+                var request = object.put(datos);
+                
+                request.onerror = function (e) {
+                    alert(request.error.name + '\n\n' + request.error.message);
+                };
+        
+                data.oncomplete = function (e) {
+                    console.log('Object successfully added');
+                    //loadAll();
+                };
             }
             function loadAll2() {
-                
+                var sData = [];
+                var sDataTotal = [];
+
                 var active = dataBase.result;
                 var data = active.transaction(["v18"], "readonly");
                 var object = data.objectStore("v18");
 
-                var myIndex = object.index('by_name'); 
-                var countRequest = myIndex.count();
-                countRequest.onsuccess = function() {
-                  console.log(countRequest.result);
-                }                
                 
+                object.openCursor().onsuccess = function (e) {
+                    
+                    var result = e.target.result;
+                    
+                    if (result === null) {
+                        return;
+                    }
+                   // console.log(JSON.stringify(result.value));
+                    var objJSON = result.value;
+                    sData.push(objJSON.soc_order, objJSON.soc_code, objJSON.soc_name, objJSON.pt_code, objJSON.pt_name, objJSON.llt_code, objJSON.llt_name);
+                    //console.log(sData);
+                    sDataTotal.push(sData);
+                    sData = [];
+                    result.continue();
+                    
+                };                
+
+                              
+                data.oncomplete = function() {
+                    //console.log(sDataTotal.toString());
+
+                   var table = $('#example').DataTable( {
+                        data: sDataTotal,
+                        columns: [
+                            { title: "SOC ORDER" },
+                            { title: "SOC CODE" },
+                            { title: "SOC NAME" },
+                            { title: "PT CODE" },
+                            { title: "PT NAME" },
+                            { title: "LLT CODE" },
+                            { title: "LLT NAME" }
+                        ]
+                    } );   
+
+                    $('#example tbody').on('click', 'tr', function () {
+                        var data = table.row( this ).data();
+                        document.querySelector('#selectedItem').value = 'You clicked on '+data[1]+'\'s row' ;
+                    } );
+
+
+                }
                 
             }
                
@@ -268,39 +315,18 @@
 
         </script>
     </head>
-    <body onload="startDB();">
-        <input type="text" id="soc_order" placeholder="Enter Soc Order" />
-        <input type="text" id="soc_code" placeholder="Enter SOC code" />
-        <input type="text" id="soc_name" placeholder="Enter SOC name" />
-        <input type="text" id="pt_code" placeholder="Enter PT code" />
-        <input type="text" id="pt_name" placeholder="Enter PT Name" />
-        <input type="text" id="llt_code" placeholder="Enter LLT Code" />
-        <input type="text" id="llt_name" placeholder="Enter LLT Name" />
+    <body>
         <button type="button" onclick="add();">Save</button>
         <button type="button" onclick="AddJSON();">Add JSON</button>
         <hr />
-        <div id="elements">
-            <table>
-                <caption>Meddra</caption>
-                <thead>
-                    <tr>
-                        <th>Soc Order</th>
-                        <th>Soc Code</th>
-                        <th>Soc Name</th>
-                        <th>PT Code</th>
-                        <th>PT Name</th>
-                        <th>LLT Code</th>
-                        <th>LLT Name</th>
-                        <th> </th>
-                    </tr>
-                </thead>
-                <tbody id="elementsList">
-                    <tr>
-                        <td colspan="3">Not elements to show</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <button type="button" onclick="loadAllByName();">Order by name</button>
+        <table id="example" class="display" width="100%"></table>
+        <label id="selectedItem"></label>
     </body>
+    
+    <script>
+      $(document).ready(function() {
+       startDB();
+       //alert("Aqui va nuevo codigo");
+      });
+    </script>
 </html>

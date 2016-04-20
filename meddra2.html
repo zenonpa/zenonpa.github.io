@@ -159,9 +159,27 @@
                 var myIndex = object.index('by_name');
                 var countRequest = myIndex.count();
                 countRequest.onsuccess = function() {
+<<<<<<< HEAD
                     console.log(JSON.stringify(countRequest.result.value));
                 }
 
+=======
+                    console.log(countRequest.result);
+                }
+                var arr = Object.keys(object).map(function(k) { return obj[k] });
+                $('#example').DataTable( {
+                    data: arr,
+                    columns: [
+                        { title: "SOC ORDER" },
+                        { title: "SOC CODE" },
+                        { title: "SOC NAME" },
+                        { title: "PT CODE" },
+                        { title: "PT NAME" },
+                        { title: "LLT CODE" },
+                        { title: "LLT NAME" }
+                    ]
+                } );
+>>>>>>> 63ec27a25c69a2fa9bab5e275583c666d113e0e6
 
             }
             
