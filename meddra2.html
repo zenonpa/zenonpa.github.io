@@ -25,7 +25,7 @@
                 
                 dataBase.onsuccess = function (e) {
                     console.log('Database loaded');
-                    loadAll();
+                    loadAll2();
                 };
                 
                 dataBase.onerror = function (e) {
@@ -148,6 +148,18 @@
                     //loadAll();
                 };
             }
+
+            function loadAll2() {
+                var active = dataBase.result;
+                var data = active.transaction(["v18"], "readonly");
+                var object = data.objectStore("v18");
+                var myIndex = object.index('by_name'); 
+                var countRequest = myIndex.count();
+                countRequest.onsuccess = function() {
+                  console.log(countRequest.result);
+                }                
+            }
+            
             function loadAll() {
                 
                 var active = dataBase.result;
