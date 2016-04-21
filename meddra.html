@@ -1,13 +1,4 @@
  <!DOCTYPE html>
-<!--
-    Author: Rolando Caldas Sanchez
-    Blog: http://rolandocaldas.com/
-    Google+: https://plus.google.com/+RolandoCaldasSanchez
-    Linkedin: http://www.linkedin.com/in/rolandocaldas
-    Twitter: https://twitter.com/rolando_caldas
-    This file is part of an article:
-    http://rolandocaldas.com/html5/indexeddb-recuperando-los-datos-almacenados
--->
 <html>
     <head>
         <meta charset="UTF-8" />
@@ -46,6 +37,23 @@
 
             }
 
+
+            function clearV18(){
+                var active = dataBase.result;
+                var data = active.transaction(["v18"], "readwrite");
+                var object = data.objectStore("v18");
+                var request = object.clear();
+                
+                request.onerror = function (e) {
+                    alert(request.error.name + '\n\n' + request.error.message);
+                };
+        
+                data.oncomplete = function (e) {
+                    console.log("Datos Eliminados");
+                    location.reload();
+                };
+                
+            }
 
                         
 
@@ -131,16 +139,20 @@
                     
 
               $.ajax({url: 'http://pvmedra2.azurewebsites.net/api/meddra/1' ,dataType: 'json', success: function(data) {   
-                    addRegistros(data);                                      
+                    addRegistros(data);
+                  //  console.log("eliminado");                                   
                     }.bind(this),
                     error: function(xhr, status, err) {
                         console.error(this.props.url, status, err.toString());
                     }.bind(this)
-                });              
+                });            
+                //console.log("eliminado 2");       
             }
             function addRegistros(dat1){
                 for (var i in dat1) {
                   addRegistrosMain(JSON.stringify(dat1[i]));
+
+                  //  console.log("eliminado 3");     
                  // console.log(JSON.stringify(dat1[i]));
                 }
             }
@@ -149,7 +161,7 @@
                 var active = dataBase.result;
                 var data = active.transaction(["v18"], "readwrite");
                 var object = data.objectStore("v18");
-                object.clear();
+                
                 var request = object.put(datos);
                 
                 request.onerror = function (e) {
@@ -158,8 +170,11 @@
         
                 data.oncomplete = function (e) {
                     console.log('Object successfully added');
-                    //loadAll();
+                    
+                  //  console.log("eliminado 4");     
                 };
+
+                  //  console.log("eliminado 5");     
             }
             function loadAll2() {
                 var sData = [];
@@ -206,7 +221,8 @@
 
                     $('#example tbody').on('click', 'tr', function () {
                         var data = table.row( this ).data();
-                        document.querySelector('#selectedItem').value = 'You clicked on '+data[1]+'\'s row' ;
+//                        document.querySelector('#selectedItem').value = 'You clicked on '+data[1]+'\'s row' ;
+                        console.log('Selected record : '+data[5]+'.');
                     } );
 
 
@@ -316,11 +332,12 @@
         </script>
     </head>
     <body>
-        <button type="button" onclick="add();">Save</button>
+    
         <button type="button" onclick="AddJSON();">Add JSON</button>
+        <button type="button" onclick="clearV18();">Remove Data</button>
         <hr />
         <table id="example" class="display" width="100%"></table>
-        <label id="selectedItem"></label>
+        <input id="selectedItem" />
     </body>
     
     <script>
