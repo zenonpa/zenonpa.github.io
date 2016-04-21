@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
-    <link rel="stylesheet" href="pure.css">
     <link rel="stylesheet" href="styles.css" class="rel">
-</head>
 <body>
-<div class="pure-menu pure-menu-horizontal">
+<div id="znavbar" class="pure-menu pure-menu-horizontal">
  <a href="#" class="pure-menu-link pure-menu-heading">Pv Safety</a>
     <ul class="pure-menu-list">
         <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">C.1 Case</a></li>
@@ -26,11 +24,8 @@
 
 <div class="pure-g">
 <div class="pure-u-5-5">
-
-<form action="#" method="post" class="demoForm" id="demoForm">           
     <input type="checkbox" name="active" id="chkboxpregnant" value="1" /><label for="chkboxpregnant">Pregnant</label>
     <input type="checkbox" name="active" id="chkboxmasked" value="1" /><label for="chkboxmasked">Masked</label>     
-</form>
 </div>
 
 </div>
@@ -43,13 +38,13 @@
                        <div class="pure-control-group">
                         <label class="col-md-1 lbl_e2bcodes" for="id_field_patientnameinitials">D.1</label>
                         <label class="col-md-5 lbl_e2bnames" for="id_field_patientnameinitials">Patient (name or initials)</label>                        
-                            <input class="form-control" tabIndex="1" id="id_field_patientnameinitials" type="text"  placeholder="maskable" ref="patientnameinitials" maxLength="60" />
-                        
+                           <div id="mask00"> <input class="form-control" tabIndex="1" id="id_field_patientnameinitials" type="text"  placeholder="maskable" ref="patientnameinitials" maxLength="60" />
+                           </div>
                     </div>
                     <div class="pure-control-group">
                         <label class="col-md-1 lbl_e2bcodes" for="id_field_gpmedical">D.1.1.1</label>
                         <label class="col-md-5 lbl_e2bnames" for="id_field_gpmedical">GP Medical</label>                        
-                            <input class="form-control" tabIndex="1" id="id_field_gpmedical" type="text" placeholder="maskable" maxLength="20" />                        
+                         <div id="mask01">   <input class="form-control" tabIndex="1" id="id_field_gpmedical" type="text" placeholder="maskable" maxLength="20" />     </div>                   
                     </div>
                     <div class="pure-control-group">
                         <label class="col-md-1 lbl_e2bcodes" for="id_field_specialist">D.1.1.2</label>
@@ -95,14 +90,13 @@
                             </select>
                         </div>
                     </div>
-                    <div class="pure-control-group">
+
+                    <div class="pure-control-group" id="pregnant00">
                         <label class="col-md-1 lbl_e2bcodes">D.2.2.1</label>
                         <label class="col-md-5 lbl_e2bnames">Gestation Period when Reaction / Event
                             <br />was observed in the Foetus
                         </label>
-                        
                             <input class="form-control" tabIndex="1" id="id_field_gestationperiodreactionevent" type="text" placeholder="12345" maxLength="5" />
-                        
                         <div class="col-md-3">
                             <select class="form-control">
                                 <option selected>Choose</option>
@@ -190,7 +184,7 @@
     <div class="pure-u-1-2"><!--Right div-->
          <form>
          <div class="col-md-6 column2">
-                    <div class="pure-form">
+                    <div class="pure-form"  id="pregnant01">
                         <label class="col-md-1 lbl_e2bcodes">D.6</label>
                         <label class="col-md-5 lbl_e2bnames">Menstrual Date</label>
                         
@@ -342,5 +336,6 @@
     </div><!--Right div end-->
 
 </div>
+    <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
