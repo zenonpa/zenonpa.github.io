@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('chkboxpregnant').onclick = function() { toggleMostrar(this, "preg" ); };
     document.getElementById('chkboxmasked').onclick = function() {   toggleMostrarInputs(this, "mask");  };    
 
-
     function toggleMostrar(box, idd) {
         var elements =document.querySelectorAll('[id^=\'' + idd +'\']');   
         if ( box.checked ) {
