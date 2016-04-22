@@ -8,28 +8,51 @@ background: #BEC3C7;
     color: #fff;
 }
 
-input[type="text"], textarea, select{
-	background-color: darkblue !important;
-	color: white;
 
+input[type="text"], textarea{
+	background-color: darkblue;
+	color: white;
+	width: 220px;
 }
 
-input:focus[type="text"], textarea:focus{
+input:focus[id^="number"], input:focus[type="text"], textarea:focus{
 	background-color: lightblue;
 	color: white;
 	border-radius: 0px;
 	
 }
 
-
-/*
-.lbl_e2bcodes {
-margin: 0 10px 0 10px;
-width: 300px;
+input[id^="number"]{
+	background-color: darkblue;
+	color: white;	
+	width: 100px;	
 }
 
-.lbl_e2bnames {
-    margin: 0 10px 0 10px;
-    width: 300px;
+select[id^="select_"]{
+	background-color: darkblue;
+	color: white;	
+	width: 115px;
+}
+select[id^="select2"]{
+	background-color: darkblue;
+	color: white;	
+	width: 220px;
+}
 
-}*/
+
+.lbl_e2bcodes{
+	padding-left: 10px;
+	padding-right: 15px;
+	width: 55px;
+}
+
+
+.pure-form-aligned .pure-control-group label {
+ text-align: left; 
+ width: 200px;
+}
+
+.pure-form select{
+	background-color: darkblue;
+	color: white;	
+}
