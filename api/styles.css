@@ -1,4 +1,5 @@
-@import "pure.css";
+@import "//yui.yahooapis.com/pure/0.6.0/pure-min.css";
+@import "//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css";
 
 .pure-menu-horizontal {
 background: #BEC3C7;    
