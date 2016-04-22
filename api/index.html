@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <link rel="stylesheet" href="style.css" class="rel">
+</head>
+<body>
+<div id="header">
+<form action="#" method="post" class="demoForm" id="demoForm">           
+    <input type="checkbox" name="active" id="chkboxpregnant" value="1" /><label for="chkboxpregnant">Pregnant</label>
+    <input type="checkbox" name="active" id="chkboxmasked" value="1" /><label for="chkboxmasked">Masked</label>     
+</form>
+</div>
+
+
+	<div id="content">
+  <div id="left">
+     <form class="form-horizontal" role="form">
+ <div class="col-md-6 column1">
+                    <div class="form-group">
+                        <label class="col-md-1 lbl_e2bcodes" for="id_field_patientnameinitials">D.1</label>
+                        <label class="col-md-5 lbl_e2bnames" for="id_field_patientnameinitials">Patient (name or initials)</label>
+                        <div class="col-md-4" id="hidedivmasked">
+                            <input class="form-control" tabIndex="1" id="id_field_patientnameinitials" type="text"  placeholder="maskable" ref="patientnameinitials" maxLength="60" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 lbl_e2bcodes" for="id_field_gpmedical">D.1.1.1</label>
+                        <label class="col-md-5 lbl_e2bnames" for="id_field_gpmedical">GP Medical</label>
+                        <div class="col-md-4" id="hidedivmasked">
+                            <input class="form-control" tabIndex="1" id="id_field_gpmedical" type="text" placeholder="maskable" maxLength="20" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 lbl_e2bcodes" for="id_field_specialist">D.1.1.2</label>
+                        <label class="col-md-5 lbl_e2bnames" for="id_field_specialist">Specialist</label>
+                        <div class="col-md-4" id="hidedivmasked">
+                            <input class="form-control" tabIndex="1" id="id_field_specialist" type="text" placeholder="maskable" maxLength="20" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 lbl_e2bcodes" for="id_field_hospital">D.1.1.3</label>
+                        <label class="col-md-5 lbl_e2bnames" for="id_field_hospital">Hospital</label>
+                        <div class="col-md-4" id="hidedivmasked">
+                            <input class="form-control" tabIndex="1" id="id_field_hospital" type="text" placeholder="maskable" maxLength="20" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 lbl_e2bcodes" for="id_field_investigation">D.1.1.4</label>
+                        <label class="col-md-5 lbl_e2bnames" for="id_field_investigation">Investigation</label>
+                        <div class="col-md-4" id="hidedivmasked">
+                            <input class="form-control" tabIndex="1" id="id_field_investigation" type="text" placeholder="maskable"  maxLength="20" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 lbl_e2bcodes">D.2.1</label>
+                        <label class="col-md-5 lbl_e2bnames">Date of Birth</label>
+                        <div class="col-md-3" id="hidedivmasked">
+                            <input class="form-control" tabIndex="1" id="id_dateofbirth" type="text" placeholder="maskable" maxLength="20" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 lbl_e2bcodes" for="id_field_agetimeonsetreaction">D.2.2</label>
+                        <label class="col-md-5 lbl_e2bnames" for="id_field_agetimeonsetreaction">Age at Time of Onset of Reaction / Event</label>
+                        <div class="col-md-2">
+                            <input class="form-control" tabIndex="1" id="id_field_agetimeonsetreaction" type="text" placeholder="12345" maxLength="5" />
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-control">
+                                <option selected>Choose</option>
+                                <option value="patient_ageattime_years">Years</option>
+                                <option value="patient_ageattime_months">Months</option>
+                                <option value="patient_ageattime_days">Days</option>
+                                <option value="patient_ageattime_hours">Hours</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 lbl_e2bcodes">D.2.2.1</label>
+                        <label class="col-md-5 lbl_e2bnames">Gestation Period when Reaction / Event
+                            <br />was observed in the Foetus
+                        </label>
+                        <div class="col-md-2">
+                            <input class="form-control" tabIndex="1" id="id_field_gestationperiodreactionevent" type="text" placeholder="12345" maxLength="5" />
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-control">
+                                <option selected>Choose</option>
+                                <option>Years</option>
+                                <option>Months</option>
+                                <option>Days</option>
+                                <option>Hours</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 lbl_e2bcodes">D.2.3</label>
+                        <label class="col-md-5 lbl_e2bnames">Patient Age Group (as per reporter)</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" tabIndex="1" id="id_field_patientagegroup">
+                                <option value="0" selected="">Choose</option>
+                                <option value="1">Foetus</option>
+                                <option value="2">Neonate</option>
+                                <option value="1">Infant</option>
+                                <option value="2">Child</option>
+                                <option value="1">Adolescent</option>
+                                <option value="2">Adult</option>
+                                <option value="1">Elderly</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 lbl_e2bcodes" for="id_field_bodyweight">D.3</label>
+                        <label class="col-md-5 lbl_e2bnames" for="id_field_bodyweight">Body Weight</label>
+                        <div class="col-md-2">
+                            <input class="form-control" tabIndex="1" id="id_field_bodyweight" type="text"placeholder="12345" maxLength="6" />
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-control">
+                                <option selected>Choose</option>
+                                <option>Kilograms</option>
+                                <option>Pounds</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 lbl_e2bcodes" for="id_field_height">D.4</label>
+                        <label class="col-md-5 lbl_e2bnames" for="id_field_height">Height</label>
+                        <div class="col-md-2">
+                            <input class="form-control" tabIndex="1" id="id_field_height" type="text" placeholder="12345" maxLength="3" />
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-control">
+                                <option selected>Choose</option>
+                                <option>Meters</option>
+                                <option>Feet</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-md-1 lbl_e2bcodes" for="id_field_gender">D.5</label>
+                        <label class="col-md-5 lbl_e2bnames" for="id_field_gender">Gender</label>
+                        <div class="_rdn">
+                            <div class="col-md-2" >
+                                <select class="form-control" tabIndex="1" id="id_field_gender">
+                                    <option value="0" selected="">Choose</option>
+                                    <option value="1">Maskable</option>
+                                    <option value="2">Male</option>
+                                    <option value="1">Female</option>
+                                    <option value="2">UNK</option>
+                                    <option value="1">ASKU</option>
+                                    <option value="2">NASK</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2" >
+                                <select class="form-control">
+                                    <option selected>Choose</option>
+                                    <option>UNK</option>
+                                    <option>ASKU</option>
+                                    <option>NASK</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>    
+                </div>
+  </div>
+
+  <div id="right">
+             <form>
+         <div class="col-md-6 column2">
+                    <div class="form-group">
+                        <label class="col-md-1 lbl_e2bcodes">D.6</label>
+                        <label class="col-md-5 lbl_e2bnames">Menstrual Date</label>
+                        <div class="col-md-3">
+                            <input class="form-control" tabIndex="1" id="id_menstrualdate" type="text" placeholder="dd/mm/yyyy" maxLength="20" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 lbl_e2bcodes">Non-E2B</label>
+                        <label class="col-md-5 lbl_e2bnames">Calculated delivery Date</label>
+                        <div class="col-md-3">
+                            <input class="form-control" tabIndex="1" id="id_calculateddeliverydate" type="text" placeholder="dd/mm/yyyy" maxLength="20" />
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                        <label class="col-md-1 lbl_e2bcodes">Non-E2B</label>
+                        <label class="col-md-5 lbl_e2bnames">First postnatal follow-up Date</label>
+                        <div class="col-md-3">
+                            <input class="form-control" tabIndex="1" id="id_1stfollowupdate" type="text" placeholder="dd/mm/yyyy" maxLength="20" />
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                        <label class="col-md-1 lbl_e2bcodes">Non-E2B</label>
+                        <label class="col-md-5 lbl_e2bnames">Second postnatal follow-up Date</label>
+                        <div class="col-md-3">
+                            <input class="form-control" tabIndex="1" id="id_2ndfollowupdate" type="text" placeholder="dd/mm/yyyy" maxLength="20" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 lbl_e2bcodes">Non-E2B</label>
+                        <label class="col-md-5 lbl_e2bnames">Last medical consultation</label>
+                        <div class="col-md-3">
+                            <input class="form-control" tabIndex="1" id="id_lastmedicalconsultation" type="text" placeholder="dd/mm/yyyy" maxLength="20" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 lbl_e2bcodes" for="id_field_ethnicgroup">Non-E2B</label>
+                        <label class="col-md-5 lbl_e2bnames" for="id_field_ethnicgroup">Ethnic Group</label>
+                        <div class="col-md-4">
+                            <select class="form-control" tabIndex="1" id="id_field_ethnicgroup">
+                                <option value="0" selected="">Choose</option>
+                                <option value="1">Aboriginal</option>
+                                <option value="2">African</option>
+                                <option value="1">Afrikaner</option>
+                                <option value="2">American Indian</option>
+                                <option value="1">Asian</option>
+                                <option value="2">Black</option>
+                                <option value="1">Chinese</option>
+                                <option value="2">Hispanic or Latino</option>
+                                <option value="1">Indian</option>
+                                <option value="2">Japanese</option>
+                                <option value="1">Mongol</option>
+                                <option value="2">Native Hawaiien</option>
+                                <option value="1">Not Hispanic</option>
+                                <option value="2">Other Group</option>
+                                <option value="1">Polinesian</option>
+                                <option value="2">Unknown</option>
+                                <option value="1">White</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 lbl_e2bcodes" for="id_field_concomitanttherapies">D.7.3</label>
+                        <label class="col-md-5 lbl_e2bnames" for="id_field_concomitanttherapies">Concomitant Therapies</label>
+                        <div class="col-md-4">
+                            <input class="form-control" tabIndex="1" id="id_field_concomitanttherapies" type="text" placeholder="ABCD"  maxLength="10"" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 lbl_e2bcodes">D.9.1</label>
+                        <label class="col-md-5 lbl_e2bnames">Death Time</label>
+                        <div class="_rdn2>
+                            <div class="col-md-3" >
+                                <input class="form-control" tabIndex="1" id="id_deathtime" type="text" placeholder="dd/mm/yyyy" maxLength="20" />
+                            </div>
+                            <div class="col-md-2" >
+                                <select class="form-control">
+                                    <option selected>Choose</option>
+                                    <option>UNK</option>
+                                    <option>ASKU</option>
+                                    <option>NASK</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 lbl_e2bcodes" for="id_select_wasautopsydone">D.9.3</label>
+                        <label class="col-md-5 lbl_e2bnames" for="id_select_wasautopsydone">Was Autopsy Done?</label>
+                        <div class="_rdn3">
+                            <div class="col-md-2" >
+                                <select class="form-control" tabIndex="1" id="id_select_wasautopsydone">
+                                    <option value="0" selected="">Choose</option>
+                                    <option value="1">Yes</option>
+                                    <option value="2">No</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3" >
+                                <select class="form-control">
+                                    <option selected>Choose</option>
+                                    <option>UNK</option>
+                                    <option>ASKU</option>
+                                    <option>NASK</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 lbl_e2bcodes">Non-E2B</label>
+                        <label class="col-md-5 lbl_e2bnames">Delivery date</label>
+                        <div class="col-md-3">
+                            <input class="form-control" tabIndex="1" id="id_deliverydate" type="text" placeholder="dd/mm/yyyy" maxLength="20" />
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                        <label class="col-md-1 lbl_e2bcodes" for="id_field_neonatebodyweight">Non-E2B</label>
+                        <label class="col-md-5 lbl_e2bnames" for="id_field_neonatebodyweight">Neonate Body Weight (g)</label>
+                        <div class="col-md-2">
+                            <input class="form-control" tabIndex="1" id="id_field_neonatebodyweight"type="text"placeholder="12345" maxLength="6" />
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                        <label class="col-md-1 lbl_e2bcodes" for="id_field_neonateheight">Non-E2B</label>
+                        <label class="col-md-5 lbl_e2bnames" for="id_field_neonateheight">Neonate Height (cm)</label>
+                        <div class="col-md-2">
+                            <input class="form-control" tabIndex="1" id="id_field_neonateheight" type="text" placeholder="12345" maxLength="6" />
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                        <label class="col-md-1 lbl_e2bcodes" for="id_field_textrelevantneonateh">Non-E2B</label>
+                        <label class="col-md-5 lbl_e2bnames" for="id_field_textrelevantneonateh">Text for Relevant Neonate History</label>
+                        <div class="col-md-5">
+                            <textarea class="form-control" tabIndex="1" id="id_field_textrelevantneonateh" cols="50" rows="5" placeholder="ABCD" maxLength="2000"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-1 lbl_e2bcodes" for="id_field_textrelevantmedicalhistory">D.7.2</label>
+                        <label class="col-md-5 lbl_e2bnames" for="id_field_textrelevantmedicalhistory">Text for Relevant Medical History and Concurrent Conditions.(not including reaction / event)</label>
+                        <div class="col-md-5" >
+                            <div class="_rdn4">
+                                <textarea class="form-control" tabIndex="1" id="id_field_textrelevantmedicalhistory" cols="50" rows="5" placeholder="ABCD" maxLength="2000"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                        <label class="col-md-1 lbl_e2bcodes" for="id_field_textrelevantaccouchement">Non-E2B</label>
+                        <label class="col-md-5 lbl_e2bnames" for="id_field_textrelevantaccouchement">Text for Relevant Accouchement History</label>
+                        <div class="col-md-5">
+                            <textarea class="form-control" tabIndex="1" id="id_field_textrelevantaccouchement" id="id_field_textrelevantaccouchement" cols="50" rows="5" placeholder="ADCD" maxLength="2000"></textarea>
+                        </div>
+                </div>
+            </form>
+
+  </div>
+</div>
+<script src="script.js"></script>
+	
+</body>
+</html>
