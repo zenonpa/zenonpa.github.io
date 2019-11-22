@@ -1,10 +1,3 @@
-Uso de PVSafety Manager con Angular 2.0
+Uso de Web Pages en Github
 
-Jürgen Schulberger.
-Zenon Paredes.
-Ysrael Paredes.
-
-
-SASS Convert to CSS
-http://www.sassmeister.com/
-
+2019-11-22
