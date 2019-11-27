@@ -1,6 +1,5 @@
-  h1{
-    color:green;
-  }
+
+
   html {
     background-color: #94a2f6;
     font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
@@ -48,4 +47,13 @@
   .button--grey:hover {
     color: #fff;
     background-color: #35495e;
+  }
+
+  .container {
+      background-color: green;
+      margin: 0px;
+      min-height: auto;
+      display: table;
+      width: 100%;
+      padding: 0%;
   }
