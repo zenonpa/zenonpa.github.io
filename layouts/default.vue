@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <Header />
-    <Registro />
     <nuxt />
   </div>
 </template>
@@ -9,6 +8,7 @@
 <script>
 import Registro from '@/components/Registro';
 import Header from '@/components/Header';
+import { firebase, db } from '@/plugins/firebase'
 
 export default { 
   components: {

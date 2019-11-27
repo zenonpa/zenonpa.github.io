@@ -3,10 +3,10 @@
     <div>
       <logo />
       <h1 class="title">
-        embajada58
+        Embajada de Venezuela
       </h1>
       <h2 class="subtitle">
-        My prime Nuxt.js project
+        Lima - Peru
       </h2>
       <div class="links">
         <nuxt-link v-for="post in posts" 
@@ -27,7 +27,7 @@ export default {
   components: {
     Logo
   },
-  head () {
+  head () { 
     return {
       title: 'Embajada de Venezuela'
     }

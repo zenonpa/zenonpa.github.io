@@ -1,21 +1,26 @@
 <template>
     <ul class="header1">
-        <div> 
-          <img src="@/assets/escudovzla0.png" class="logoImg">          
-        </div>        
-        <button class="btnLogin">Iniciar sesión</button>
-        <h1 class="titEmbajada"> Embajada de Venezuela</h1>
-        <h2>Lima - PERU</h2>
-        <h3></h3>
+     
+        <button v-on:click="signIn" class="btnLogin">Iniciar sesión</button>
+
     
     </ul>
 </template>
 
 <script>
-
+import firebase from 'firebase/app';
+import 'firebase/app';
+import 'firebase/auth';
 export default {
-    name: 'Header'
-
+    name: 'Header',
+    methods: {
+      signIn: function() {      
+        var proveedor = new firebase.auth.GoogleAuthProvider();          
+        firebase.auth().signInWithPopup(proveedor).catch(/*function (error) {
+            //console.error('Error haciendo logIn: ', error);
+        }*/);
+      }
+    }
 }
 </script>
 <style scoped>
@@ -30,7 +35,7 @@ export default {
 
 .titEmbajada {
     top: 3rem;
-    color: yellow!important;
+    color: #711226!important;
     /* width: 100px;*/
     text-align: center;
     margin: auto!important;

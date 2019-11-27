@@ -1,7 +1,7 @@
 {
   "name": "embajada58",
   "version": "1.0.0",
-  "description": "My prime Nuxt.js project",
+  "description": "Embajada58",
   "author": "Zenon Paredes",
   "private": true,
   "scripts": {
@@ -12,6 +12,7 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
+    "firebase": "^7.5.0",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {}

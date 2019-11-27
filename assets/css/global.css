@@ -1,7 +1,7 @@
 
 
   html {
-    background-color: #94a2f6;
+    background-color: #6fb98f;
     font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
       Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-size: 16px;
@@ -50,10 +50,14 @@
   }
 
   .container {
-      background-color: green;
+      /* background-color: green;*/
       margin: 0px;
       min-height: auto;
       display: table;
       width: 100%;
       padding: 0%;
+  }
+
+  h2 {
+      color: #711226;
   }
