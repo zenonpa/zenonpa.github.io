@@ -12,8 +12,11 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
+    "bootstrap": "^4.4.1",
+    "bootstrap-vue": "^2.1.0",
     "firebase": "^7.5.0",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "vue": "^2.6.10"
   },
   "devDependencies": {}
 }
