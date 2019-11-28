@@ -1,19 +1,19 @@
 <template>
   <div class="container">
-    <TheHeader />
+    <Header />
     <nuxt />
   </div>
 </template>
 
 <script>
 import Registro from '@/components/Registro';
-import TheHeader from '@/components/TheHeader';
+import Header from '@/components/Header';
 import { firebase, db } from '@/plugins/firebase'
 
 export default { 
   components: {
     Registro,
-    TheHeader
+    Header
   },
   head () {
       return {
