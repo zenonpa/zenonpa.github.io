@@ -8,11 +8,14 @@ export default {
   /*
   ** Headers of the page
   */
-  head: {
+  head: {    // this htmlAttrs you need
+    htmlAttrs: {
+      lang: 'en',
+    },
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' },
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
@@ -27,7 +30,9 @@ export default {
   ** Global CSS
   */
   css: [
-    '@/assets/css/global.css'
+    '@/assets/css/global.css',
+    '@/node_modules/bootstrap/dist/css/bootstrap.css',
+    '@/node_modules/bootstrap-vue/dist/bootstrap-vue.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -43,6 +48,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    'bootstrap-vue/nuxt'    
   ],
   /*
   ** Build configuration

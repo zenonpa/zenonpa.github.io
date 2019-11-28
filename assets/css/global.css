@@ -1,4 +1,6 @@
-
+  .selector-for-some-widget {
+    box-sizing: content-box;
+  }
 
   html {
     background-color: #6fb98f;
@@ -46,7 +48,7 @@
   
   .button--grey:hover {
     color: #fff;
-    background-color: #35495e;
+    background-color: #711226;
   }
 
   .container {
