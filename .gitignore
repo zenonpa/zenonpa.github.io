@@ -88,3 +88,7 @@ sw.*
 
 # Vim swap files
 *.swp
+
+semantic/node_modules/
+node_modules/
+semantic/dist/
