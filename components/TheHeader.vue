@@ -1,25 +1,47 @@
 <template>
     <ul class="header1">
-     
-        <button v-on:click="signIn" class="btnLogin">Iniciar sesión</button>
+        <div v-if="authUser">
+            <span class="btnLogout"> Iniciaste sesión como {{ authUser.email }}        </span>
+            <button v-on:click="logout" class="btnLogout">Cerrar sesión</button>
+        </div>
+        <div v-else>
+            <button v-on:click="signIn" class="btnLogin">Iniciar sesión</button>
+        </div>
 
     
     </ul>
 </template>
 
 <script>
-import firebase from 'firebase/app';
+import firebase from 'firebase/app';    
 import 'firebase/app';
 import 'firebase/auth';
 export default {
-    name: 'Header',
+    data () {
+        return {
+            email: '',
+            password: '',
+            authUser:null
+        }
+    },
+    name: 'TheHeader',
     methods: {
-      signIn: function() {      
-        var proveedor = new firebase.auth.GoogleAuthProvider();          
-        firebase.auth().signInWithPopup(proveedor).catch(/*function (error) {
-            //console.error('Error haciendo logIn: ', error);
-        }*/);
-      }
+        signIn: function() {      
+            var proveedor = new firebase.auth.GoogleAuthProvider();          
+            firebase.auth().signInWithPopup(proveedor)
+                .catch(error => alert('Error haciendo logIn: : ' + error.message)/*function (error) {//console.error('Error haciendo logIn: ', error);}*/)
+                .then(data => this.authUser = data.user);
+        },      
+        logout: function() {
+            var xxx = this;
+            firebase.auth().signOut().then(() => {
+                this.$router.replace('/')
+                this.authUser = null;
+            })
+      },
+        created () {
+            firebase.auth().onAuthStateChanged(user => { this.authUser = user })
+        }
     }
 }
 </script>

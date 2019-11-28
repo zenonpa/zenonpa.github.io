@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <logo />
+      <TheLogo />
       <h1 class="title">
         Embajada de Venezuela
       </h1>
@@ -21,11 +21,11 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import TheLogo from '~/components/TheLogo.vue'
 
 export default {
   components: {
-    Logo
+    TheLogo
   },
   head () { 
     return {
