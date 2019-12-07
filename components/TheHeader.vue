@@ -79,7 +79,6 @@ export default {
     border: 0px;
     left:0;    
     width: 100%;
-    /*right: 3em;*/
     top: 0;    
     margin: 0;
 }
@@ -101,17 +100,11 @@ export default {
 }
 
 @media screen and (max-width:667px) {
-    .header1 {
-        position: absolute;
-        right: -4rem;
-        margin: 0;
-    }
-
     .logoImg {
         position: absolute;      
         left: -3rem;
         top: 2.8rem;
-        width: 40%;    
+        width: 30%;    
     }    
 
     .btnLogin, .btnLogout  {
@@ -120,25 +113,22 @@ export default {
         border: none;
         border-radius: 0.5em;
         width: 7rem;
-        height: 4.5rem;
+        height: 2.6rem;
         color: yellow;
         /* padding: 15px 32px;*/
         text-align: center;
         text-decoration: none;
-        font-size: 18px;
+        font-size: 1rem;
         float: right;
-        margin-right: 10%;    
+        margin: 5%;   
+        padding-top: 0rem;
+        padding-bottom: 0rem; 
+        padding-left: 0rem;
+        padding-right: 0rem;       
     }
 }
 
 @media screen and (min-width: 668px) and (max-width:768px) {
-    .header1 {
-        position: absolute;
-        right: -0.5rem;
-        top: -3em;    
-        margin: 0;
-    }
-
     .btnLogin, .btnLogout  {
         /* background-color: #711226;*/
         cursor: pointer;

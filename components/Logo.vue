@@ -5,6 +5,7 @@
 <style>
 .NuxtLogo {
   animation: 1s appear;
+  width: 32%;
 }
 
 @keyframes appear {
