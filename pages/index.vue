@@ -1,6 +1,8 @@
 <template>
   <div class="container">
     <div>
+      <TheHeader />
+
       <logo />
       <h1 class="title">
         Embajada de Venezuela
@@ -8,24 +10,44 @@
       <h2 class="subtitle">
         Lima - Peru
       </h2>
-      <div class="links">
-        <nuxt-link v-for="post in posts" 
+      <button v-on:click='userConectado'> Test </button>
+      <div class="links" v-if="usuario !== null">
+        
+         <nuxt-link :to="`/registro`" class="button--grey"> Registro        </nuxt-link> 
+
+
+       <!-- <nuxt-link v-for="post in posts" 
                    :to="{name: 'posts-id', params: {id: post.id}}"
                    :key="post.id"
                    class="button--grey">
           {{post.title}}
-        </nuxt-link>
+        </nuxt-link>  -->
+
       </div>
     </div>
+
+  <TheFooter />
   </div>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
+import TheHeader from '@/components/TheHeader';
+import TheFooter from '@/components/TheFooter';
 
 export default {
+  data () {
+    return {
+      authUser: null
+    }
+  },
+  props: [
+    { usuario: null }
+  ],
   components: {
-    Logo
+    Logo,    
+    TheHeader, 
+    TheFooter
   },
   head () { 
     return {
@@ -36,7 +58,12 @@ export default {
     posts () {
       return this.$store.state.posts.all
     }
-  }
+  },
+  methods: {
+    userConectado: function() { 
+      alert(this.usuario);
+    }
+  } 
 }
 </script>
 

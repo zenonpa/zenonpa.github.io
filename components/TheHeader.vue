@@ -28,9 +28,17 @@ export default {
     methods: {
         signIn: function() {      
             var proveedor = new firebase.auth.GoogleAuthProvider();          
+            proveedor.setCustomParameters({
+                'login_hint': 'user@gmail.com',
+                prompt: 'select_account'  
+            });            
             firebase.auth().signInWithPopup(proveedor)
                 .catch(error => alert('Error haciendo logIn: : ' + error.message)/*function (error) {//console.error('Error haciendo logIn: ', error);}*/)
-                .then(data => this.authUser = data.user);
+                .then(data => {
+                    this.authUser = data.user;
+                    console.log(this.authUser);
+                    this.$emit('usuario', this.authUser);
+                });
         },      
         logout: function() {
             var xxx = this;
@@ -45,6 +53,8 @@ export default {
     }
 }
 </script>
+
+
 <style scoped>
 .logoImg {
     position: absolute;
@@ -66,9 +76,11 @@ export default {
 
 .header1 {
     position: absolute;
+    border: 0px;
+    left:0;    
     width: 100%;
     /*right: 3em;*/
-    top: -2em;    
+    top: 0;    
     margin: 0;
 }
 
@@ -84,8 +96,8 @@ export default {
       text-decoration: none;
       font-size: 1rem;
       float: right;
-      margin-right: 11%;
-      margin-top: 4rem;      
+      margin-right: 8%;
+      margin-top: 1rem;      
 }
 
 @media screen and (max-width:667px) {
